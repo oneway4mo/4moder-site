@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4moder Bot — Твич Бот</title>
+    <style>
+        /* Глубокий темный фон для максимального контраста с неоном */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0b0c10; 
+            color: #f5f5f7;
+            font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            padding: 30px 20px;
+        }
+
+        /* Аватарка бота с неоново-бирюзовым свечением */
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #00f2fe; /* Электрический бирюзовый */
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 10px 0 5px 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+        }
+
+        .description {
+            font-size: 14px;
+            color: #9aa0a6;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Базовый стиль кнопок */
+        .btn {
+            display: block;
+            padding: 14px;
+            color: #ffffff;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.25s ease-in-out;
+        }
+
+        /* Главная кнопка — неоново-бирюзовая */
+        .btn-neon {
+            background: #00f2fe;
+            color: #0b0c10; /* Темный текст для читаемости */
+            border: 1px solid #00f2fe;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+        }
+
+        /* Эффекты при наведении */
+        .btn:hover {
+            transform: scale(1.02);
+            border-color: #00f2fe;
+            color: #00f2fe;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+        }
+
+        /* Эффект при наведении на главную кнопку */
+        .btn-neon:hover {
+            background: #00b8d4;
+            border-color: #00b8d4;
+            color: #0b0c10;
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Аватарка (замените на логотип вашего бота, когда загрузите его) -->
+        <img class="avatar" src="https://twitch.tv" alt="4moder Logo">
+        
+        <h1>4moder Bot</h1>
+        <p class="description">Умный бот модерации и интерактива для вашего Twitch-канала. Авто-модерация, кастомные команды и розыгрыши.</p>
+
+        <div class="links-container">
+            <!-- ⚠️ ЗАМЕНИТЕ ССЫЛКИ НИЖЕ НА СВОИ РЕАЛЬНЫЕ ⚠️ -->
+            <a href="ССЫЛКА_НА_ПОДКЛЮЧЕНИЕ_БОТА_К_КАНАЛУ" class="btn btn-neon">Войти через Twitch</a>
+            <a href="ССЫЛКА_НА_СПИСОК_КОМАНД" target="_blank" class="btn">Команды бота</a>
+            <a href="ССЫЛКА_НА_ДИСКОРД_ИЛИ_ТГ_ДЛЯ_ПОДДЕРЖКИ" target="_blank" class="btn">Сервер поддержки</a>
+        </div>
+    </div>
+
+</body>
+</html>
