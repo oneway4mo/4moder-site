@@ -3,46 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4moder Bot — Твич Бот</title>
+    <title>4moder Bot — Полная экосистема для Twitch</title>
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* Глубокий темный фон для максимального контраста с неоном */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         body {
             margin: 0;
-            padding: 0;
-            background-color: #0b0c10; 
+            padding: 50px 0;
+            background: linear-gradient(-45deg, #050608, #0b0c10, #06161e, #0b0c10);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: #f5f5f7;
             font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
 
-        .container {
+        .main-card {
             text-align: center;
-            max-width: 400px;
+            max-width: 450px;
             width: 90%;
-            padding: 30px 20px;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 24px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            margin-bottom: 50px;
         }
 
-        /* Аватарка бота с неоново-бирюзовым свечением */
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
+            50% { box-shadow: 0 0 35px rgba(0, 242, 254, 0.7); border-color: #00e5ff; }
+            100% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
+        }
+
         .avatar {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            border: 3px solid #00f2fe; /* Электрический бирюзовый */
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
+            border: 3px solid #00f2fe;
+            animation: neonPulse 3s infinite ease-in-out;
             margin-bottom: 20px;
             object-fit: cover;
         }
 
         h1 {
-            font-size: 28px;
-            margin: 10px 0 5px 0;
-            font-weight: 700;
+            font-size: 32px;
+            margin: 10px 0 8px 0;
+            font-weight: 800;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
             letter-spacing: -0.5px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
         }
 
         .description {
@@ -55,64 +73,181 @@
         .links-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
         }
 
-        /* Базовый стиль кнопок */
         .btn {
-            display: block;
-            padding: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
             color: #ffffff;
             text-decoration: none;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
             font-size: 15px;
             font-weight: 600;
-            transition: all 0.25s ease-in-out;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Главная кнопка — неоново-бирюзовая */
         .btn-neon {
             background: #00f2fe;
-            color: #0b0c10; /* Темный текст для читаемости */
+            color: #0b0c10;
             border: 1px solid #00f2fe;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
         }
 
-        /* Эффекты при наведении */
         .btn:hover {
-            transform: scale(1.02);
+            transform: translateY(-2px);
             border-color: #00f2fe;
             color: #00f2fe;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+            background: rgba(0, 242, 254, 0.02);
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.15);
         }
 
-        /* Эффект при наведении на главную кнопку */
         .btn-neon:hover {
-            background: #00b8d4;
-            border-color: #00b8d4;
+            background: #ffffff;
+            border-color: #ffffff;
             color: #0b0c10;
-            box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
+            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.6);
+        }
+
+        /* ─── РАЗДЕЛ ВСЕХ МОДУЛЕЙ И ФУНКЦИЙ ─── */
+        .section-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+        }
+
+        .features-grid {
+            max-width: 1000px;
+            width: 90%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            color: #00f2fe;
+            margin-bottom: 18px;
+            text-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin: 0 0 15px 0;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .feature-card ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .feature-card li {
+            font-size: 13.5px;
+            color: #9aa0a6;
+            margin-bottom: 10px;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .feature-card li i {
+            color: #00f2fe;
+            font-size: 11px;
+            margin-top: 4px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Аватарка (замените на логотип вашего бота, когда загрузите его) -->
+    <!-- Главная визитка (Стиль Lamperouge) -->
+    <div class="main-card">
         <img class="avatar" src="https://twitch.tv" alt="4moder Logo">
-        
         <h1>4moder Bot</h1>
-        <p class="description">Умный бот модерации и интерактива для вашего Twitch-канала. Авто-модерация, кастомные команды и розыгрыши.</p>
+        <p class="description">Абсолютное слияние возможностей. Полная замена Lamperouge, Nightbot, Fossabot, StreamElements и Wizebot в одной сверхбыстрой панели.</p>
 
         <div class="links-container">
-            <!-- ⚠️ ЗАМЕНИТЕ ССЫЛКИ НИЖЕ НА СВОИ РЕАЛЬНЫЕ ⚠️ -->
-            <a href="ССЫЛКА_НА_ПОДКЛЮЧЕНИЕ_БОТА_К_КАНАЛУ" class="btn btn-neon">Войти через Twitch</a>
-            <a href="ССЫЛКА_НА_СПИСОК_КОМАНД" target="_blank" class="btn">Команды бота</a>
-            <a href="ССЫЛКА_НА_ДИСКОРД_ИЛИ_ТГ_ДЛЯ_ПОДДЕРЖКИ" target="_blank" class="btn">Сервер поддержки</a>
+            <a href="#" class="btn btn-neon"><i class="fa-brands fa-twitch"></i> Панель управления</a>
+            <a href="#" class="btn"><i class="fa-solid fa-book"></i> Документация и API</a>
+            <a href="#" class="btn"><i class="fa-brands fa-discord"></i> Дискорд техподдержки</a>
         </div>
     </div>
 
-</body>
-</html>
+    <h2 class="section-title">Полная карта функционала</h2>
+
+    <!-- Сетка абсолютно всех категорий и функций -->
+    <div class="features-grid">
+        
+        <!-- Категория 1: Модерация и Защита чата -->
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-shield-cat"></i></div>
+            <h3>Модерация и Безопасность</h3>
+            <ul>
+                <li><i class="fa-solid fa-check"></i> <b>Умные фильтры:</b> Защита от спама ссылками, капсом, смайлами, длинными сообщениями и повторяющимся текстом.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Черные списки (Banned Words):</b> Поддержка регулярных выражений (RegEx) для блокировки сложных обходов мата.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Авто-наказания:</b> Настраиваемая цепочка мер (Варн -> Удаление строки -> Таймаут -> Бан).</li>
+                <li><i class="fa-solid fa-check"></i> <b>Продвинутый Пермит:</b> Временное разрешение конкретным зрителям отправлять ссылки (`!permit`).</li>
+            </ul>
+        </div>
+
+        <!-- Категория 2: Конструктор команд -->
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-code"></i></div>
+            <h3>Кастомные Команды и API</h3>
+            <ul>
+                <li><i class="fa-solid fa-check"></i> <b>Динамические переменные:</b> Десятки переменных (аптайм, фолловаж, инфа о стриме, погода, счетчики).</li>
+                <li><i class="fa-solid fa-check"></i> <b>Уровни доступа:</b> Жесткие лимиты на использование (Стример, Модератор, VIP, Саб, Все).</li>
+                <li><i class="fa-solid fa-check"></i> <b>Кастомные кулдауны:</b> Настройка глобального и пользовательского времени перезарядки для каждой команды.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Интеграция сторонних API:</b> Запросы через `$(urlfetch)` для вывода любых данных из сети.</li>
+            </ul>
+        </div>
+
+        <!-- Категория 3: Система лояльности -->
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
+            <h3>Экономика и Баллы лояльности</h3>
+            <ul>
+                <li><i class="fa-solid fa-check"></i> <b>Поинты за просмотр:</b> Гибкое начисление валюты бота активным зрителям и фолловерам.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Магазин наград (Store):</b> Полноценная витрина в чате, где зрители могут покупать роли, заказывать услуги или интерактивы.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Чат-игры и Гэмблинг:</b> Ставки на исход матчей, дуэли между зрителями (`!duel`), рулетка, слоты и ограбления банков.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Рейтинги и Топы:</b> Списки лидеров по поинтам, времени просмотра и сообщениям (`!top`).</li>
+            </ul>
+        </div>
+
+        <!-- Категория 4: Утилиты, Виджеты и Оповещения -->
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-bell"></i></div>
+            <h3>Утилиты и Автоматизация</h3>
+            <ul>
+                <li><i class="fa-solid fa-check"></i> <b>Умные Таймеры:</b> Автоматические сообщения в чат по времени или количеству строк (для рекламы, соцсетей).</li>
+                <li><i class="fa-solid fa-check"></i> <b>Розыгрыши (Giveaways):</b> Мощный модуль розыгрышей среди ключевых слов с билетами за баллы канала или сабки.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Песенная очередь (Song Request):</b> Заказ треков зрителями через YouTube/Spotify с фильтрацией по лайкам и длине.</li>
