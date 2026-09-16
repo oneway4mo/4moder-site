@@ -2,12 +2,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Трюк против кэша мобилы: заставляем браузер каждый раз проверять обновления -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>4moder — oneway4mo prime</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* Идеально плавная бесконечная анимация перелива */
-        @keyframes slowGradient {
+        /* Ультра-плавный бесконечный перелив неонового Розового и Бирюзового */
+        @keyframes liquidNeon {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
@@ -16,9 +20,10 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #040508, #0b0c10, #031c26, #0b0c10, #05070a);
-            background-size: 300% 300%;
-            animation: slowGradient 20s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            /* Смесь глубокого темного, неонового бирюзового и ярко-розового */
+            background: linear-gradient(-45deg, #050508, #09202b, #0b0c10, #2b0922, #050508);
+            background-size: 400% 400%;
+            animation: liquidNeon 15s ease-in-out infinite;
             color: #f5f5f7;
             font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
             display: flex;
@@ -29,117 +34,127 @@
             box-sizing: border-box;
         }
 
-        /* Базовые стили карточки для ПК */
+        /* Карточка с двойным неоновым свечением */
         .main-card {
             text-align: center;
-            max-width: 480px; 
+            max-width: 460px; 
             width: 90%;
-            padding: 50px 45px; 
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 28px;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7);
-            transition: all 0.3s ease;
+            padding: 55px 40px; 
+            background: rgba(10, 10, 15, 0.65);
+            /* Градиентная неоновая рамка: бирюза переходит в розовый */
+            border: 2px solid #00f2fe;
+            border-image: linear-gradient(135deg, #00f2fe, #ff007f) 1;
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.15), 0 0 30px rgba(255, 0, 127, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Мягкий пульс для аватарки */
-        @keyframes neonPulse {
-            0% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
-            50% { box-shadow: 0 0 35px rgba(0, 242, 254, 0.6); border-color: #00e5ff; }
-            100% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
+        /* Анимация пульсации аватарки между двумя цветами */
+        @keyframes twinPulse {
+            0% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.4); border-color: #00f2fe; }
+            50% { box-shadow: 0 0 35px rgba(255, 0, 127, 0.6); border-color: #ff007f; }
+            100% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.4); border-color: #00f2fe; }
         }
 
         .avatar {
-            width: 110px;
-            height: 110px;
-            min-height: 110px;
-            min-width: 110px;
+            width: 115px;
+            height: 115px;
+            min-height: 115px;
+            min-width: 115px;
             border-radius: 50%;
             border: 3px solid #00f2fe;
-            animation: neonPulse 4s infinite ease-in-out;
-            margin-bottom: 20px;
+            animation: twinPulse 5s infinite ease-in-out;
+            margin-bottom: 25px;
             object-fit: cover;
             display: inline-block;
         }
 
         h1 {
-            font-size: 42px;
+            font-size: 46px;
             margin: 0 0 10px 0; 
-            font-weight: 800;
-            text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
-            letter-spacing: -0.5px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: -1px;
+            /* Текст переливается бирюзово-розовым */
+            background: linear-gradient(135deg, #ffffff 40%, #00f2fe, #ff007f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .description {
-            font-size: 18px;
-            color: #efeff1;
-            margin: 0 0 35px 0;
-            font-weight: 600;
+            font-size: 20px;
+            color: #ffffff;
+            margin: 0 0 45px 0;
+            font-weight: 700;
             letter-spacing: 0.5px;
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
         }
 
         .links-container {
             width: 100%;
         }
 
+        /* Кнопка с градиентом от бирюзы к розовому */
         .btn-neon {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             padding: 18px; 
-            color: #0b0c10;
+            color: #ffffff;
             text-decoration: none;
-            background: #00f2fe;
-            border: 1px solid #00f2fe;
+            background: linear-gradient(135deg, #00f2fe, #ff007f);
+            border: none;
             border-radius: 16px;
             font-size: 16px;
             font-weight: 700;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 25px rgba(0, 242, 254, 0.3);
             width: 100%;
             box-sizing: border-box;
         }
 
         .btn-neon:hover {
             transform: translateY(-3px);
-            background: #ffffff;
-            border-color: #ffffff;
-            color: #0b0c10;
-            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.6);
+            box-shadow: 0 8px 30px rgba(255, 0, 127, 0.6);
+            letter-spacing: 0.5px;
         }
 
-        /* 📱 НАСТРОЙКА ТОЛЬКО ДЛЯ ТЕЛЕФОНОВ (ширина экрана меньше 600px) */
+        /* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ (Узкая и вытянутая вертикально) */
         @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
             .main-card {
-                width: 85%; /* Делаем карточку уже, чтобы была компактнее по бокам */
-                padding: 65px 25px; /* Сильно увеличиваем вертикальные отступы — тянем вверх и вниз */
-                border-radius: 32px; /* Чуть сильнее закругляем углы для мобильного стиля */
+                width: 82% !important; /* Принудительно зажимаем ширину на мобилке */
+                padding: 70px 25px !important; /* Растягиваем карту по вертикали */
+                border-image: linear-gradient(135deg, #00f2fe, #ff007f) 1;
+                border-radius: 0px; /* Специфика border-image на некоторых мобилках */
             }
 
             .avatar {
-                width: 120px; /* На мобилках аватарку делаем даже чуть заметнее */
-                height: 120px;
-                min-height: 120px;
-                min-width: 120px;
-                margin-bottom: 30px; /* Больше отступ до имени */
+                width: 125px;
+                height: 125px;
+                min-height: 125px;
+                min-width: 125px;
+                margin-bottom: 35px;
             }
 
             h1 {
-                font-size: 38px; /* Немного уменьшаем шрифт, чтобы имя не ломало строки */
-                margin-bottom: 15px;
+                font-size: 40px;
+                margin-bottom: 12px;
             }
 
             .description {
-                font-size: 17px;
-                margin-bottom: 55px; /* Делаем гигантский отступ до кнопки, вытягивая карточку вертикально */
+                font-size: 18px;
+                margin-bottom: 65px; /* Создаем пустое вертикальное пространство до кнопки */
             }
 
             .btn-neon {
-                padding: 20px; /* Кнопку на мобилке делаем жирнее, чтобы было мега-удобно нажимать */
+                padding: 20px;
                 font-size: 17px;
-                border-radius: 18px;
             }
         }
     </style>
