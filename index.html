@@ -2,14 +2,11 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4moder — oneway4mo prime</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        @keyframes bgMotion {
+        @keyframes slowGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
@@ -18,10 +15,10 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #020204, #0d0517, #040406, #140324, #020204);
+            background: linear-gradient(135deg, #040508, #0b0c10, #031c26, #0b0c10, #05070a);
             background-size: 300% 300%;
-            animation: bgMotion 20s ease-in-out infinite;
-            color: #ffffff;
+            animation: slowGradient 20s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            color: #f5f5f7;
             font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -31,151 +28,126 @@
             box-sizing: border-box;
         }
 
-        .master-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            aspect-ratio: 1 / 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-sizing: border-box;
-        }
-
-        .devil-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            filter: drop-shadow(0 15px 40px rgba(139, 24, 227, 0.55));
-        }
-
-        .ui-box {
-            position: absolute;
-            top: 31%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
+        .main-card {
             text-align: center;
-            width: 65%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            max-width: 480px; 
+            width: 90%;
+            padding: 50px 45px; 
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 28px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7);
         }
 
-        @keyframes avatarGlow {
-            0% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); border-color: #ffffff; }
-            50% { box-shadow: 0 0 25px rgba(186, 85, 255, 0.6); border-color: #ba55ff; }
-            100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); border-color: #ffffff; }
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
+            50% { box-shadow: 0 0 35px rgba(0, 242, 254, 0.6); border-color: #00e5ff; }
+            100% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
         }
 
         .avatar {
-            width: 85px;
-            height: 85px;
-            min-height: 85px;
-            min-width: 85px;
+            width: 110px;
+            height: 110px;
+            min-height: 110px;
+            min-width: 110px;
             border-radius: 50%;
-            border: 3px solid #ffffff;
-            animation: avatarGlow 4s infinite ease-in-out;
-            margin-bottom: 10px;
+            border: 3px solid #00f2fe;
+            animation: neonPulse 4s infinite ease-in-out;
+            margin-bottom: 20px;
             object-fit: cover;
-            background: #000000;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            display: inline-block;
         }
 
         h1 {
-            font-size: 34px;
-            margin: 0 0 2px 0; 
-            font-weight: 900;
-            color: #ffffff;
+            font-size: 42px;
+            margin: 0 0 10px 0; 
+            font-weight: 800;
+            text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
             letter-spacing: -0.5px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
 
         .description {
-            font-size: 14px;
-            color: #ffffff;
-            margin: 0 0 20px 0;
-            font-weight: 700;
+            font-size: 18px;
+            color: #efeff1;
+            margin: 0 0 35px 0;
+            font-weight: 600;
             letter-spacing: 0.5px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
-        .btn-panel {
+        .links-container {
+            width: 100%;
+        }
+
+        .btn-neon {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 13px 20px; 
-            color: #ffffff;
+            gap: 12px;
+            padding: 18px; 
+            color: #0b0c10;
             text-decoration: none;
-            background: rgba(0, 0, 0, 0.5); 
-            border: 2px solid #ffffff;
-            border-radius: 12px;
-            font-size: 13px;
-            font-weight: 800;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            background: #00f2fe;
+            border: 1px solid #00f2fe;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
             width: 100%;
             box-sizing: border-box;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
         }
 
-        .btn-panel:hover {
-            transform: translateY(-2px);
+        .btn-neon:hover {
+            transform: translateY(-3px);
             background: #ffffff;
-            color: #4a0080;
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6);
+            border-color: #ffffff;
+            color: #0b0c10;
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.6);
         }
 
         @media (max-width: 600px) {
-            .master-wrapper { max-width: 90%; margin-top: -25px; }
-            .ui-box { top: 30.5%; }
-            .avatar { width: 72px; height: 72px; min-height: 72px; min-width: 72px; }
-            h1 { font-size: 26px; }
-            .description { font-size: 12px; margin-bottom: 12px; }
-            .btn-panel { padding: 11px; font-size: 11px; border-radius: 10px; }
+            .main-card {
+                width: 85%; 
+                padding: 65px 25px; 
+                border-radius: 32px; 
+            }
+
+            .avatar {
+                width: 120px; 
+                height: 120px;
+                min-height: 120px;
+                min-width: 120px;
+                margin-bottom: 30px; 
+            }
+
+            h1 {
+                font-size: 38px; 
+                margin-bottom: 12px;
+            }
+
+            .description {
+                font-size: 17px;
+                margin-bottom: 55px; 
+            }
+
+            .btn-neon {
+                padding: 20px; 
+                font-size: 17px;
+                border-radius: 18px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="master-wrapper">
-        <svg class="devil-canvas" viewBox="0 0 500 500" xmlns="http://w3.org">
-            <defs>
-                <radialGradient id="faceGradient" cx="45%" cy="40%" r="55%" fx="35%" fy="30%">
-                    <stop offset="0%" stop-color="#ab4eff" />
-                    <stop offset="65%" stop-color="#5a0ca3" />
-                    <stop offset="100%" stop-color="#220042" />
-                </radialGradient>
-                <linearGradient id="hornGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#220042" />
-                    <stop offset="50%" stop-color="#5a0ca3" />
-                    <stop offset="100%" stop-color="#ab4eff" />
-                </linearGradient>
-            </defs>
+    <div class="main-card">
+        <img class="avatar" src="logo.png" alt="4moder Logo">
+        <h1>4moder</h1>
+        <p class="description">oneway4mo prime 😈</p>
 
-            <path d="M 160,150 C 130,70 70,45 25,60 C 55,90 85,125 100,170 Z" fill="url(#hornGradient)" stroke="#16002b" stroke-width="3" />
-            <path d="M 340,150 C 370,70 420,45 475,60 C 445,90 415,125 400,170 Z" fill="url(#hornGradient)" stroke="#16002b" stroke-width="3" />
-            <circle cx="250" cy="275" r="185" fill="url(#faceGradient)" stroke="#16002b" stroke-width="4" />
-            <path d="M 115,285 C 145,270 170,270 195,290" stroke="#110021" stroke-width="11" stroke-linecap="round" fill="none" />
-            <path d="M 385,285 C 355,270 330,270 305,290" stroke="#110021" stroke-width="11" stroke-linecap="round" fill="none" />
-            <path d="M 125,320 C 145,305 170,305 185,325 C 160,335 135,335 125,320 Z" fill="#110021" />
-            <path d="M 375,320 C 355,305 330,305 315,325 C 340,335 365,335 375,320 Z" fill="#110021" />
-            <path d="M 165,400 C 250,460 335,400 250,420 Z" fill="#110021" />
-        </svg>
-
-        <div class="ui-box">
-            <img class="avatar" src="logo.png" alt="4moder Logo">
-            <h1>4moder</h1>
-            <p class="description">oneway4mo prime 😈</p>
-
-            <div class="links-container">
-                <a href="#" class="btn-panel"><i class="fa-brands fa-twitch"></i> Панель управления</a>
-            </div>
+        <div class="links-container">
+            <a href="#" class="btn btn-neon"><i class="fa-brands fa-twitch"></i> Панель управления</a>
         </div>
     </div>
 
