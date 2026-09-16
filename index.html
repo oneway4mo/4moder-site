@@ -14,7 +14,7 @@
 
         body {
             margin: 0;
-            padding: 50px 0;
+            padding: 20px 0;
             background: linear-gradient(-45deg, #050608, #0b0c10, #06161e, #0b0c10);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -23,146 +23,157 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
+            box-sizing: border-box;
         }
 
+        /* Ультра-компактная главная карточка */
         .main-card {
             text-align: center;
-            max-width: 450px;
+            max-width: 380px;
             width: 90%;
-            padding: 40px 30px;
+            padding: 20px 25px;
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 24px;
+            border-radius: 20px;
             backdrop-filter: blur(12px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            margin-bottom: 50px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            margin-bottom: 25px;
         }
 
         @keyframes neonPulse {
-            0% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
-            50% { box-shadow: 0 0 35px rgba(0, 242, 254, 0.7); border-color: #00e5ff; }
-            100% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
+            0% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
+            50% { box-shadow: 0 0 25px rgba(0, 242, 254, 0.6); border-color: #00e5ff; }
+            100% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
         }
 
         .avatar {
-            width: 110px;
-            height: 110px;
-            min-height: 110px;
-            min-width: 110px;
+            width: 80px;
+            height: 80px;
+            min-height: 80px;
+            min-width: 80px;
             border-radius: 50%;
             border: 3px solid #00f2fe;
             animation: neonPulse 3s infinite ease-in-out;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             object-fit: cover;
             display: inline-block;
         }
 
         h1 {
-            font-size: 32px;
-            margin: 10px 0 8px 0;
+            font-size: 26px;
+            margin: 0 0 4px 0;
             font-weight: 800;
             text-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
             letter-spacing: -0.5px;
         }
 
         .description {
-            font-size: 14px;
-            color: #9aa0a6;
-            margin-bottom: 35px;
-            line-height: 1.6;
+            font-size: 15px;
+            color: #adadb8;
+            margin: 0 0 20px 0;
+            font-weight: 600;
         }
 
+        /* Сжатые кнопки в один компактный ряд на ПК */
         .links-container {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
         }
 
         .btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 15px;
+            gap: 8px;
+            padding: 10px 5px;
             color: #ffffff;
             text-decoration: none;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            font-size: 15px;
+            border-radius: 10px;
+            font-size: 12px;
             font-weight: 600;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
         .btn-neon {
             background: #00f2fe;
             color: #0b0c10;
             border: 1px solid #00f2fe;
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 242, 254, 0.2);
         }
 
         .btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             border-color: #00f2fe;
             color: #00f2fe;
-            background: rgba(0, 242, 254, 0.02);
-            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 242, 254, 0.1);
         }
 
         .btn-neon:hover {
             background: #ffffff;
             border-color: #ffffff;
             color: #0b0c10;
-            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.6);
+            box-shadow: 0 6px 18px rgba(0, 242, 254, 0.5);
         }
 
+        /* Небольшой аккуратный разделитель */
         .section-title {
             text-align: center;
-            font-size: 24px;
+            font-size: 14px;
             font-weight: 700;
-            margin-bottom: 30px;
-            color: #ffffff;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.4);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+            letter-spacing: 2px;
         }
 
+        /* Идеально ровная горизонтальная сетка */
         .features-grid {
-            max-width: 1400px;
+            max-width: 1200px;
             width: 95%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
-            gap: 20px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 15px;
         }
 
+        /* Тонкие, невысокие карточки функций */
         .feature-card {
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 20px;
-            padding: 25px;
+            border-radius: 14px;
+            padding: 15px;
             backdrop-filter: blur(8px);
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             box-sizing: border-box;
         }
 
         .feature-card:hover {
-            border-color: rgba(0, 242, 254, 0.4);
-            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.08);
-            transform: translateY(-4px);
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 242, 254, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .feature-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
         .feature-icon {
-            font-size: 28px;
+            font-size: 18px;
             color: #00f2fe;
-            margin-bottom: 18px;
-            text-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
         }
 
         .feature-card h3 {
-            font-size: 19px;
-            margin: 0 0 15px 0;
+            font-size: 15px;
+            margin: 0;
             color: #ffffff;
             font-weight: 700;
         }
@@ -174,87 +185,110 @@
         }
 
         .feature-card li {
-            font-size: 13px;
-            color: #9aa0a6;
-            margin-bottom: 10px;
-            line-height: 1.5;
+            font-size: 12px;
+            color: #8a8f98;
+            margin-bottom: 6px;
+            line-height: 1.4;
             display: flex;
             align-items: flex-start;
-            gap: 8px;
+            gap: 6px;
+        }
+
+        .feature-card li:last-child {
+            margin-bottom: 0;
         }
 
         .feature-card li i {
             color: #00f2fe;
-            font-size: 10px;
-            margin-top: 4px;
+            font-size: 8px;
+            margin-top: 5px;
+        }
+
+        /* Адаптивность для мобилок */
+        @media (max-width: 900px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            body { padding: 40px 0; }
+        }
+        @media (max-width: 600px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .links-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Главная визитка (Стиль Lamperouge) -->
+    <!-- Ужатая главная визитка -->
     <div class="main-card">
-        <!-- ТУТ ВПИСАНО ИМЯ КАРТИНКИ. Если ваша картинка имеет другое имя, замените logo.png на него -->
         <img class="avatar" src="logo.png" alt="4moder Logo">
         <h1>4moder Bot</h1>
-        <p class="description">Абсолютное слияние возможностей. Полная замена Lamperouge, Nightbot, Fossabot, StreamElements и Wizebot в одной сверхбыстрой панели.</p>
+        <p class="description">oneway4mo prime 😈</p>
 
+        <!-- Кнопки теперь в один компактный ряд -->
         <div class="links-container">
-            <a href="#" class="btn btn-neon"><i class="fa-brands fa-twitch"></i> Панель управления</a>
-            <a href="#" class="btn"><i class="fa-solid fa-book"></i> Документация и API</a>
-            <a href="#" class="btn"><i class="fa-brands fa-discord"></i> Дискорд техподдержки</a>
+            <a href="#" class="btn btn-neon"><i class="fa-brands fa-twitch"></i> Панель</a>
+            <a href="#" class="btn"><i class="fa-solid fa-book"></i> Команды</a>
+            <a href="#" class="btn"><i class="fa-brands fa-discord"></i> Дискорд</a>
         </div>
     </div>
 
-    <h2 class="section-title">Полная карта функционала</h2>
+    <div class="section-title">Функционал бота</div>
 
+    <!-- Ужатая сетка всех модулей (ровно 4 в ряд, текст короче) -->
     <div class="features-grid">
         
-        <!-- Категория 1: Модерация и Защита чата -->
+        <!-- Секция 1 -->
         <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-shield-cat"></i></div>
-            <h3>Модерация чата</h3>
+            <div class="feature-head">
+                <div class="feature-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                <h3>Модерация</h3>
+            </div>
             <ul>
-                <li><i class="fa-solid fa-check"></i> <b>Умные фильтры:</b> Защита от спама ссылками, капсом, смайлами и длинными сообщениями.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Черные списки (RegEx):</b> Поддержка регулярных выражений для блокировки обходов мата.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Авто-наказания:</b> Настраиваемая цепочка мер (Варн -> Таймаут -> Бан).</li>
-                <li><i class="fa-solid fa-check"></i> <b>Продвинутый Пермит:</b> Временное разрешение отправлять ссылки через `!permit`.</li>
+                <li><i class="fa-solid fa-check"></i> Фильтры спама, капса, ссылок.</li>
+                <li><i class="fa-solid fa-check"></i> Черные списки по RegEx фразам.</li>
+                <li><i class="fa-solid fa-check"></i> Авто-цепочка: Варн -> Мут -> Бан.</li>
+                <li><i class="fa-solid fa-check"></i> Разрешения через `!permit`.</li>
             </ul>
         </div>
 
-        <!-- Категория 2: Конструктор команд -->
+        <!-- Секция 2 -->
         <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-code"></i></div>
-            <h3>Команды и API</h3>
+            <div class="feature-head">
+                <div class="feature-icon"><i class="fa-solid fa-code"></i></div>
+                <h3>Команды и API</h3>
+            </div>
             <ul>
-                <li><i class="fa-solid fa-check"></i> <b>Переменные:</b> Аптайм, фолловаж, инфа о стриме, погода, счетчики.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Уровни доступа:</b> Лимиты на использование (Стример, Модератор, VIP, Саб, Все).</li>
-                <li><i class="fa-solid fa-check"></i> <b>Кулдауны:</b> Настройка глобального и пользовательского времени перезарядки.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Запросы API:</b> Использование переменной `$(urlfetch)` для вывода внешних данных.</li>
+                <li><i class="fa-solid fa-check"></i> Динамический аптайм и фолловаж.</li>
+                <li><i class="fa-solid fa-check"></i> Права: Стример / Модер / VIP / Саб.</li>
+                <li><i class="fa-solid fa-check"></i> Кастомные кулдауны на команды.</li>
+                <li><i class="fa-solid fa-check"></i> Внешние запросы через `$(urlfetch)`.</li>
             </ul>
         </div>
 
-        <!-- Категория 3: Система лояльности -->
+        <!-- Секция 3 -->
         <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
-            <h3>Баллы и Экономика</h3>
+            <div class="feature-head">
+                <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
+                <h3>Баллы и Игры</h3>
+            </div>
             <ul>
-                <li><i class="fa-solid fa-check"></i> <b>Поинты за просмотр:</b> Гибкое начисление валюты активным зрителям чата.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Магазин наград:</b> Витрина в чате для покупки ролей и интерактивов за баллы.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Чат-игры:</b> Ставки на исход матчей, дуэли (`!duel`), рулетка и слоты.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Рейтинги и Топы:</b> Списки лидеров по поинтам и времени просмотра (`!top`).</li>
+                <li><i class="fa-solid fa-check"></i> Авто-начисление поинтов чату.</li>
+                <li><i class="fa-solid fa-check"></i> Магазин ролей и интерактивов.</li>
+                <li><i class="fa-solid fa-check"></i> Игры, дуэли `!duel` и рулетка.</li>
+                <li><i class="fa-solid fa-check"></i> Топ лидеров по времени просмотра.</li>
             </ul>
         </div>
 
-        <!-- Категория 4: Утилиты, Виджеты и Оповещения -->
+        <!-- Секция 4 -->
         <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-bell"></i></div>
-            <h3>Автоматизация</h3>
+            <div class="feature-head">
+                <div class="feature-icon"><i class="fa-solid fa-bell"></i></div>
+                <h3>Автоматизация</h3>
+            </div>
             <ul>
-                <li><i class="fa-solid fa-check"></i> <b>Умные Таймеры:</b> Автоматические сообщения в чат по времени или количеству строк.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Розыгрыши (Giveaways):</b> Модуль розыгрышей с билетами за баллы или сабки.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Заказ песен:</b> Очередь треков через YouTube/Spotify с фильтрацией длины.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Дискорд Вебхуки:</b> Авто-уведомления о начале трансляции в реальном времени.</li>
+                <li><i class="fa-solid fa-check"></i> Таймеры рекламы по таймингу/строкам.</li>
+                <li><i class="fa-solid fa-check"></i> Розыгрыши (Giveaways) в один клик.</li>
+                <li><i class="fa-solid fa-check"></i> Заказ музыки YouTube/Spotify.</li>
+                <li><i class="fa-solid fa-check"></i> Вебхуки уведомлений в Дискорд.</li>
             </ul>
         </div>
 
