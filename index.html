@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>4moder — oneway4mo prime</title>
 
     <style>
@@ -10,236 +11,330 @@
             box-sizing: border-box;
         }
 
-        @keyframes smoothFloat {
-            0% {
-                transform: translate3d(-8%, -6%, 0) scale(1.05);
-            }
-
-            50% {
-                transform: translate3d(8%, 6%, 0) scale(1.12);
-            }
-
-            100% {
-                transform: translate3d(-8%, -6%, 0) scale(1.05);
-            }
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background: #05070a;
-            color: #f5f5f7;
-            font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
             min-height: 100vh;
             overflow: hidden;
+
+            background: #05070a;
+            color: #f5f5f7;
+
+            font-family:
+                Inter,
+                "Segoe UI",
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             position: relative;
+            isolation: isolate;
         }
 
-        /* Плавное свечение на всём экране */
+        /* =========================
+           МЯГКОЕ ФОНОВОЕ СВЕЧЕНИЕ
+           ========================= */
+
         body::before {
             content: "";
+
             position: fixed;
+            inset: -25%;
 
-            width: 140vw;
-            height: 140vh;
-
-            left: -20vw;
-            top: -20vh;
+            z-index: -2;
 
             background:
                 radial-gradient(
-                    circle at 25% 35%,
-                    rgba(0, 150, 190, 0.16) 0%,
-                    rgba(0, 100, 140, 0.08) 25%,
-                    transparent 55%
+                    circle at 25% 25%,
+                    rgba(0, 145, 180, 0.14) 0%,
+                    rgba(0, 145, 180, 0.06) 20%,
+                    transparent 48%
                 ),
                 radial-gradient(
-                    circle at 75% 65%,
-                    rgba(0, 220, 255, 0.10) 0%,
-                    rgba(0, 100, 140, 0.04) 30%,
-                    transparent 60%
+                    circle at 75% 70%,
+                    rgba(45, 70, 130, 0.12) 0%,
+                    rgba(45, 70, 130, 0.05) 22%,
+                    transparent 50%
                 );
 
-            filter: blur(70px);
-            animation: smoothFloat 25s ease-in-out infinite;
+            filter: blur(80px);
 
-            pointer-events: none;
-            z-index: 0;
+            animation: softAmbient 30s ease-in-out infinite;
+
             will-change: transform;
         }
 
-        .main-card {
-            position: relative;
-            z-index: 1;
+        /* Второй слой делает движение ещё мягче */
 
-            text-align: center;
-            max-width: 580px;
-            width: 95%;
-            padding: 65px 55px;
+        body::after {
+            content: "";
 
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 32px;
+            position: fixed;
+            inset: -20%;
 
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            z-index: -1;
 
-            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7);
+            background:
+                radial-gradient(
+                    ellipse at 50% 50%,
+                    rgba(0, 110, 145, 0.055),
+                    transparent 55%
+                );
+
+            filter: blur(100px);
+
+            animation: softAmbient2 42s ease-in-out infinite;
+
+            will-change: transform;
         }
 
-        @keyframes neonPulse {
+        @keyframes softAmbient {
             0% {
-                box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
-                border-color: #00f2fe;
+                transform: translate3d(-3%, -2%, 0) scale(1);
+            }
+
+            25% {
+                transform: translate3d(2%, -4%, 0) scale(1.025);
             }
 
             50% {
-                box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
-                border-color: #00e5ff;
+                transform: translate3d(4%, 3%, 0) scale(1.05);
+            }
+
+            75% {
+                transform: translate3d(-2%, 4%, 0) scale(1.025);
             }
 
             100% {
-                box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
-                border-color: #00f2fe;
+                transform: translate3d(-3%, -2%, 0) scale(1);
             }
         }
 
+        @keyframes softAmbient2 {
+            0% {
+                transform: translate3d(3%, 2%, 0) scale(1);
+            }
+
+            50% {
+                transform: translate3d(-4%, -3%, 0) scale(1.06);
+            }
+
+            100% {
+                transform: translate3d(3%, 2%, 0) scale(1);
+            }
+        }
+
+        /* =========================
+           ОСНОВНАЯ КАРТОЧКА
+           ========================= */
+
+        .main-card {
+            width: min(420px, calc(100vw - 32px));
+
+            padding: 42px 34px;
+
+            text-align: center;
+
+            background: rgba(10, 13, 18, 0.72);
+
+            border: 1px solid rgba(255, 255, 255, 0.07);
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+
+            position: relative;
+            z-index: 2;
+        }
+
+        /* =========================
+           АВАТАР
+           ========================= */
+
         .avatar {
-            width: 120px;
-            height: 120px;
-            min-height: 120px;
-            min-width: 120px;
+            width: 92px;
+            height: 92px;
+
+            margin: 0 auto 22px;
 
             border-radius: 50%;
-            border: 3px solid #00f2fe;
 
-            animation: neonPulse 4s infinite ease-in-out;
-
-            margin-bottom: 24px;
             object-fit: cover;
-            display: inline-block;
+
+            display: block;
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.45),
+                0 0 30px rgba(0, 130, 170, 0.08);
         }
+
+        /* =========================
+           ЗАГОЛОВОК
+           ========================= */
 
         h1 {
-            font-size: 52px;
-            margin: 0 0 12px 0;
-            font-weight: 800;
+            margin: 0;
 
-            text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
-            letter-spacing: -0.5px;
+            font-size: 32px;
+            line-height: 1.1;
+
+            font-weight: 700;
+
+            letter-spacing: -0.8px;
+
+            color: #ffffff;
         }
 
-        .description {
-            font-size: 20px;
-            color: #efeff1;
+        .subtitle {
+            margin-top: 11px;
 
-            margin: 0 0 45px 0;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            font-size: 15px;
+            line-height: 1.5;
+
+            color: rgba(245, 245, 247, 0.52);
         }
 
-        .links-container {
-            width: 100%;
+        /* =========================
+           КНОПКИ
+           ========================= */
 
+        .buttons {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+
+            gap: 11px;
+
+            margin-top: 30px;
         }
 
-        .btn {
+        .button {
+            width: 100%;
+
+            min-height: 52px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
 
-            padding: 18px;
-            border-radius: 16px;
+            padding: 0 18px;
 
-            font-size: 16px;
-            font-weight: 700;
+            border-radius: 13px;
+
+            border: 1px solid rgba(255, 255, 255, 0.075);
+
+            background: rgba(255, 255, 255, 0.045);
+
+            color: #ffffff;
+
             text-decoration: none;
 
-            width: 100%;
-            transition: all 0.25s ease;
+            font-size: 14px;
+            font-weight: 600;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
         }
 
-        .btn-neon {
-            color: #0b0c10;
-            background: #00f2fe;
-            border: 1px solid #00f2fe;
+        .button:hover {
+            transform: translateY(-2px);
 
-            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+            background: rgba(255, 255, 255, 0.075);
+
+            border-color: rgba(255, 255, 255, 0.13);
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.25);
         }
 
-        .btn-neon:hover {
-            transform: translateY(-3px);
-
-            background: #ffffff;
-            border-color: #ffffff;
-            color: #0b0c10;
-
-            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.6);
+        .button:active {
+            transform: translateY(0);
         }
 
-        .btn-outline {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.01);
+        /* =========================
+           TWITCH КНОПКА
+           ========================= */
 
-            border: 1px solid rgba(0, 242, 254, 0.35);
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.05);
+        .button.primary {
+            background: rgba(145, 70, 255, 0.15);
+
+            border-color: rgba(145, 70, 255, 0.22);
         }
 
-        .btn-outline:hover {
-            transform: translateY(-3px);
+        .button.primary:hover {
+            background: rgba(145, 70, 255, 0.22);
 
-            background: rgba(0, 242, 254, 0.03);
-            border-color: #00f2fe;
-            color: #00f2fe;
+            border-color: rgba(145, 70, 255, 0.32);
 
-            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.25);
+            box-shadow:
+                0 10px 35px rgba(145, 70, 255, 0.12);
         }
 
-        @media (max-width: 600px) {
+        /* =========================
+           НИЖНИЙ ТЕКСТ
+           ========================= */
+
+        .footer {
+            margin-top: 25px;
+
+            font-size: 11px;
+
+            color: rgba(255, 255, 255, 0.24);
+
+            letter-spacing: 0.2px;
+        }
+
+        /* =========================
+           МОБИЛЬНАЯ ВЕРСИЯ
+           ========================= */
+
+        @media (max-width: 480px) {
             .main-card {
-                width: 85%;
-                padding: 65px 25px;
-                border-radius: 32px;
-            }
-
-            .avatar {
-                width: 120px;
-                height: 120px;
-                min-height: 120px;
-                min-width: 120px;
-                margin-bottom: 30px;
+                padding: 34px 24px;
+                border-radius: 21px;
             }
 
             h1 {
-                font-size: 38px;
-                margin-bottom: 12px;
+                font-size: 28px;
             }
 
-            .description {
-                font-size: 17px;
-                margin-bottom: 55px;
-            }
-
-            .btn {
-                padding: 20px;
-                font-size: 17px;
-                border-radius: 18px;
+            .avatar {
+                width: 82px;
+                height: 82px;
             }
         }
 
+        /* =========================
+           ЕСЛИ У ПОЛЬЗОВАТЕЛЯ
+           ОТКЛЮЧЕНЫ АНИМАЦИИ
+           ========================= */
+
         @media (prefers-reduced-motion: reduce) {
             body::before,
-            .avatar {
+            body::after {
                 animation: none;
+            }
+
+            .button {
+                transition: none;
             }
         }
     </style>
@@ -250,27 +345,37 @@
     <div class="main-card">
 
         <img
-            class="avatar"
             src="logo.png"
-            alt="4moder Logo"
+            alt="4moder"
+            class="avatar"
         >
 
         <h1>4moder</h1>
 
-        <p class="description">
+        <div class="subtitle">
             oneway4mo prime 😈
-        </p>
+        </div>
 
-        <div class="links-container">
+        <div class="buttons">
 
-            <a href="#" class="btn btn-neon">
+            <a
+                href="#"
+                class="button primary"
+            >
                 Подключить бота
             </a>
 
-            <a href="#" class="btn btn-outline">
+            <a
+                href="#"
+                class="button"
+            >
                 Панель управления
             </a>
 
+        </div>
+
+        <div class="footer">
+            oneway4mo prime
         </div>
 
     </div>
