@@ -28,17 +28,17 @@
             box-sizing: border-box;
         }
 
-        /* Сильно увеличенный квадрат для ПК */
+        /* Максимально расширенный и увеличенный квадрат для ПК */
         .main-card {
             text-align: center;
-            max-width: 580px; 
-            width: 95%;
-            padding: 65px 55px; 
+            max-width: 720px; 
+            width: 90%;
+            padding: 80px 70px; 
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 32px;
+            border-radius: 36px;
             backdrop-filter: blur(15px);
-            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75);
             box-sizing: border-box;
         }
 
@@ -49,50 +49,49 @@
         }
 
         .avatar {
-            width: 120px;
-            height: 120px;
-            min-height: 120px;
-            min-width: 120px;
+            width: 130px;
+            height: 130px;
+            min-height: 130px;
+            min-width: 130px;
             border-radius: 50%;
             border: 3px solid #00f2fe;
             animation: neonPulse 4s infinite ease-in-out;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             object-fit: cover;
             display: inline-block;
         }
 
         h1 {
-            font-size: 52px;
-            margin: 0 0 12px 0; 
+            font-size: 58px;
+            margin: 0 0 14px 0; 
             font-weight: 800;
             text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
         }
 
         .description {
-            font-size: 20px;
+            font-size: 22px;
             color: #efeff1;
-            margin: 0 0 45px 0;
+            margin: 0 0 50px 0;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
 
-        /* Вертикальный стек для двух кнопок */
         .links-container {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
         }
 
         .btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 18px; 
-            border-radius: 16px;
-            font-size: 16px;
+            gap: 14px;
+            padding: 20px; 
+            border-radius: 18px;
+            font-size: 17px;
             font-weight: 700;
             text-decoration: none;
             width: 100%;
@@ -112,7 +111,7 @@
             background: #ffffff;
             border-color: #ffffff;
             color: #0b0c10;
-            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.6);
+            box-shadow: 0 12px 35px rgba(0, 242, 254, 0.6);
         }
 
         .btn-outline {
@@ -127,22 +126,22 @@
             background: rgba(0, 242, 254, 0.03);
             border-color: #00f2fe;
             color: #00f2fe;
-            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.25);
+            box-shadow: 0 6px 20px rgba(0, 242, 254, 0.25);
         }
 
         @media (max-width: 600px) {
             .main-card {
-                width: 85%; 
-                padding: 65px 25px; 
+                width: 78%; 
+                padding: 75px 25px; 
                 border-radius: 32px; 
             }
 
             .avatar {
-                width: 120px; 
-                height: 120px;
-                min-height: 120px;
-                min-width: 120px;
-                margin-bottom: 30px; 
+                width: 115px; 
+                height: 115px;
+                min-height: 115px;
+                min-width: 115px;
+                margin-bottom: 35px; 
             }
 
             h1 {
@@ -152,12 +151,12 @@
 
             .description {
                 font-size: 17px;
-                margin-bottom: 55px; 
+                margin-bottom: 65px; 
             }
 
             .btn {
-                padding: 20px; 
-                font-size: 17px;
+                padding: 18px; 
+                font-size: 16px;
                 border-radius: 18px;
             }
         }
