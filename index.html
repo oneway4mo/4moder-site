@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4moder — oneway4mo prime</title>
-    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         html, body {
             margin: 0;
@@ -24,6 +23,8 @@
             position: relative;
         }
 
+        /* Свечения по бокам, отодвинуты дальше к краям экрана.
+           Оба на одной высоте — полная симметрия. */
         body::before,
         body::after {
             content: '';
@@ -35,19 +36,19 @@
 
         body::before {
             background: radial-gradient(
-                circle at 30% 35%,
+                circle at 15% 50%,
                 rgba(0, 180, 220, 0.18) 0%,
-                rgba(0, 120, 180, 0.08) 35%,
-                rgba(0, 0, 0, 0) 70%
+                rgba(0, 120, 180, 0.08) 40%,
+                rgba(0, 0, 0, 0) 75%
             );
         }
 
         body::after {
             background: radial-gradient(
-                circle at 70% 65%,
-                rgba(0, 220, 255, 0.12) 0%,
-                rgba(0, 100, 160, 0.05) 40%,
-                rgba(0, 0, 0, 0) 72%
+                circle at 85% 50%,
+                rgba(0, 180, 220, 0.18) 0%,
+                rgba(0, 120, 180, 0.08) 40%,
+                rgba(0, 0, 0, 0) 75%
             );
         }
 
