@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4moder — Полная экосистема для Twitch</title>
+    <title>4moder — oneway4mo prime</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        @keyframes gradientBG {
+        /* Идеально плавная бесконечная анимация перелива */
+        @keyframes slowGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
@@ -14,255 +15,114 @@
 
         body {
             margin: 0;
-            padding: 20px 0;
-            background: linear-gradient(-45deg, #050608, #0b0c10, #06161e, #0b0c10);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            padding: 0;
+            /* Размытые глубокие неоновые цвета для мягкого градиента */
+            background: linear-gradient(135deg, #040508, #0b0c10, #031c26, #0b0c10, #05070a);
+            background-size: 300% 300%;
+            animation: slowGradient 20s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             color: #f5f5f7;
             font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            box-sizing: border-box;
+            overflow: hidden;
         }
 
-        /* Увеличенная главная карточка */
+        /* Большая, солидная карточка строго по центру */
         .main-card {
             text-align: center;
-            max-width: 500px; 
+            max-width: 480px; 
             width: 90%;
-            padding: 40px; 
+            padding: 50px 45px; 
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 24px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
-            margin-bottom: 35px;
+            border-radius: 28px;
+            backdrop-filter: blur(15px); /* Эффект матового стекла */
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7);
         }
 
+        /* Мягкий пульс для аватарки */
         @keyframes neonPulse {
-            0% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
-            50% { box-shadow: 0 0 25px rgba(0, 242, 254, 0.6); border-color: #00e5ff; }
-            100% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
+            0% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
+            50% { box-shadow: 0 0 35px rgba(0, 242, 254, 0.6); border-color: #00e5ff; }
+            100% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); border-color: #00f2fe; }
         }
 
         .avatar {
-            width: 95px;
-            height: 95px;
-            min-height: 95px;
-            min-width: 95px;
+            width: 110px;
+            height: 110px;
+            min-height: 110px;
+            min-width: 110px;
             border-radius: 50%;
             border: 3px solid #00f2fe;
-            animation: neonPulse 3s infinite ease-in-out;
-            margin-bottom: 15px;
+            animation: neonPulse 4s infinite ease-in-out;
+            margin-bottom: 20px;
             object-fit: cover;
             display: inline-block;
         }
 
         h1 {
-            font-size: 38px;
-            margin: 0 0 30px 0; 
+            font-size: 42px;
+            margin: 0 0 10px 0; 
             font-weight: 800;
-            text-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+            text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
             letter-spacing: -0.5px;
         }
 
-        /* Контейнер для одной сплошной кнопки */
+        .description {
+            font-size: 18px;
+            color: #efeff1;
+            margin: 0 0 35px 0;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
         .links-container {
             width: 100%;
         }
 
-        /* Сплошная жирная неоновая кнопка на всю ширину */
+        /* Сплошная мощная неоновая кнопка */
         .btn-neon {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 16px; 
+            gap: 12px;
+            padding: 18px; 
             color: #0b0c10;
             text-decoration: none;
             background: #00f2fe;
             border: 1px solid #00f2fe;
-            border-radius: 14px;
-            font-size: 15px;
+            border-radius: 16px;
+            font-size: 16px;
             font-weight: 700;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
             width: 100%;
             box-sizing: border-box;
         }
 
         .btn-neon:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             background: #ffffff;
             border-color: #ffffff;
             color: #0b0c10;
-            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.6);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .features-grid {
-            max-width: 1200px;
-            width: 95%;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); 
-            gap: 15px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 14px;
-            padding: 15px;
-            backdrop-filter: blur(8px);
-            transition: all 0.25s ease;
-            box-sizing: border-box;
-        }
-
-        .feature-card:hover {
-            border-color: rgba(0, 242, 254, 0.3);
-            box-shadow: 0 8px 20px rgba(0, 242, 254, 0.05);
-            transform: translateY(-2px);
-        }
-
-        .feature-head {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        .feature-icon {
-            font-size: 18px;
-            color: #00f2fe;
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
-        }
-
-        .feature-card h3 {
-            font-size: 15px;
-            margin: 0;
-            color: #ffffff;
-            font-weight: 700;
-        }
-
-        .feature-card ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .feature-card li {
-            font-size: 12px;
-            color: #8a8f98;
-            margin-bottom: 6px;
-            line-height: 1.4;
-            display: flex;
-            align-items: flex-start;
-            gap: 6px;
-        }
-
-        .feature-card li:last-child {
-            margin-bottom: 0;
-        }
-
-        .feature-card li i {
-            color: #00f2fe;
-            font-size: 8px;
-            margin-top: 5px;
-        }
-
-        @media (max-width: 900px) {
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
-            body { padding: 40px 0; }
-        }
-        @media (max-width: 600px) {
-            .features-grid { grid-template-columns: 1fr; }
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.6);
         }
     </style>
 </head>
 <body>
 
-    <!-- Идеально отцентрованная карточка с одной сплошной кнопкой -->
+    <!-- Главная и единственная панель на экране -->
     <div class="main-card">
         <img class="avatar" src="logo.png" alt="4moder Logo">
         <h1>4moder</h1>
+        <p class="description">oneway4mo prime 😈</p>
 
         <div class="links-container">
+            <!-- Когда будет готова ссылка от Твича, вставишь её вместо знака # -->
             <a href="#" class="btn btn-neon"><i class="fa-brands fa-twitch"></i> Панель управления</a>
         </div>
-    </div>
-
-    <div class="section-title">Функционал бота</div>
-
-    <div class="features-grid">
-        
-        <!-- Секция 1 -->
-        <div class="feature-card">
-            <div class="feature-head">
-                <div class="feature-icon"><i class="fa-solid fa-shield-cat"></i></div>
-                <h3>Модерация</h3>
-            </div>
-            <ul>
-                <li><i class="fa-solid fa-check"></i> Фильтры спама, капса, ссылок.</li>
-                <li><i class="fa-solid fa-check"></i> Черные списки по RegEx фразам.</li>
-                <li><i class="fa-solid fa-check"></i> Авто-цепочка: Варн -> Мут -> Бан.</li>
-                <li><i class="fa-solid fa-check"></i> Разрешения через `!permit`.</li>
-            </ul>
-        </div>
-
-        <!-- Секция 2 -->
-        <div class="feature-card">
-            <div class="feature-head">
-                <div class="feature-icon"><i class="fa-solid fa-code"></i></div>
-                <h3>Команды и API</h3>
-            </div>
-            <ul>
-                <li><i class="fa-solid fa-check"></i> Динамический аптайм и фолловаж.</li>
-                <li><i class="fa-solid fa-check"></i> Права: Стример / Модер / VIP / Саб.</li>
-                <li><i class="fa-solid fa-check"></i> Кастомные кулдауны на команды.</li>
-                <li><i class="fa-solid fa-check"></i> Внешние запросы через `$(urlfetch)`.</li>
-            </ul>
-        </div>
-
-        <!-- Секция 3 -->
-        <div class="feature-card">
-            <div class="feature-head">
-                <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
-                <h3>Баллы и Игры</h3>
-            </div>
-            <ul>
-                <li><i class="fa-solid fa-check"></i> Авто-начисление поинтов чату.</li>
-                <li><i class="fa-solid fa-check"></i> Магазин ролей и интерактивов.</li>
-                <li><i class="fa-solid fa-check"></i> Игры, дуэли `!duel` и рулетка.</li>
-                <li><i class="fa-solid fa-check"></i> Топ лидеров по времени просмотра.</li>
-            </ul>
-        </div>
-
-        <!-- Секция 4 -->
-        <div class="feature-card">
-            <div class="feature-head">
-                <div class="feature-icon"><i class="fa-solid fa-bell"></i></div>
-                <h3>Автоматизация</h3>
-            </div>
-            <ul>
-                <li><i class="fa-solid fa-check"></i> Таймеры рекламы по таймингу/строкам.</li>
-                <li><i class="fa-solid fa-check"></i> Розыгрыши (Giveaways) в один клик.</li>
-                <li><i class="fa-solid fa-check"></i> Заказ музыки YouTube/Spotify.</li>
-                <li><i class="fa-solid fa-check"></i> Вебхуки уведомлений в Дискорд.</li>
-            </ul>
-        </div>
-
     </div>
 
 </body>
