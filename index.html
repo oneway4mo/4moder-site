@@ -6,9 +6,11 @@
     <title>4moder — oneway4mo prime</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        @keyframes spinGlow {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        /* Ультра-плавная анимация «дыхания» света через прозрачность */
+        @keyframes masterGlow {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.2; }
         }
 
         body {
@@ -26,36 +28,23 @@
             position: relative;
         }
 
-        .bg-glow-container {
+        /* Неподвижное неоновое облако с идеально плавной пульсацией */
+        body::before {
+            content: '';
             position: absolute;
-            width: 800px;
-            height: 800px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(3, 28, 38, 0.4) 40%, rgba(0,0,0,0) 70%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 0;
-            animation: spinGlow 30s linear infinite;
+            animation: masterGlow 10s ease-in-out infinite;
             pointer-events: none;
+            will-change: opacity;
         }
 
-        .glow-ball-1 {
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(0, 242, 254, 0.1) 0%, rgba(0,0,0,0) 70%);
-            top: 10%;
-            left: 10%;
-        }
-
-        .glow-ball-2 {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(3, 28, 38, 0.6) 0%, rgba(0,0,0,0) 70%);
-            bottom: 10%;
-            right: 10%;
-        }
-
+        /* Дорогая матовая карточка с тонкой границей */
         .main-card {
             text-align: center;
             max-width: 460px; 
@@ -198,13 +187,7 @@
 </head>
 <body>
 
-    <div class="bg-glow-container">
-        <div class="glow-ball-1"></div>
-        <div class="glow-ball-2"></div>
-    </div>
-
     <div class="main-card">
-        <!-- Чтобы убрать временный желтый смайл, просто залей на GitHub нормальный файл логотипа бота под именем logo.png -->
         <img class="avatar" src="logo.png" alt="4moder Logo">
         <h1>4moder</h1>
         <p class="description">oneway4mo prime 😈</p>
