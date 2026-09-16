@@ -6,7 +6,7 @@
     <title>4moder — oneway4mo prime</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        @keyframes masterGlow {
+        @keyframes softPulse {
             0% { opacity: 0.15; transform: translate(-50%, -50%) scale(0.95); }
             50% { opacity: 0.45; transform: translate(-50%, -50%) scale(1.05); }
             100% { opacity: 0.15; transform: translate(-50%, -50%) scale(0.95); }
@@ -37,7 +37,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 0;
-            animation: masterGlow 12s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            animation: softPulse 12s cubic-bezier(0.25, 1, 0.5, 1) infinite;
             pointer-events: none;
             will-change: opacity, transform;
         }
@@ -47,33 +47,64 @@
             max-width: 460px; 
             width: 90%;
             padding: 60px 45px; 
-            background: rgba(13, 18, 26, 0.45); 
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 28px;
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: #0d0f12; 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
             position: relative;
             z-index: 1;
+            animation: cardAppear 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes neonPulse {
-            0% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.2); border-color: #00f2fe; }
-            50% { box-shadow: 0 0 30px rgba(0, 242, 254, 0.5); border-color: #00e5ff; }
-            100% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.2); border-color: #00f2fe; }
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(12px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
-        .avatar {
+        .avatar-wrap {
+            position: relative;
             width: 110px;
             height: 110px;
             min-height: 110px;
             min-width: 110px;
-            border-radius: 50%;
-            border: 3px solid #00f2fe;
-            animation: neonPulse 5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
-            margin-bottom: 25px;
-            object-fit: cover;
+            margin: 0 auto 25px auto;
             display: inline-block;
+        }
+
+        .avatar-wrap::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+            z-index: -1;
+            animation: neonPulse 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonPulse {
+            from {
+                transform: scale(0.96);
+                opacity: 0.4;
+            }
+            to {
+                transform: scale(1.03);
+                opacity: 0.75;
+            }
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid #00f0ff;
+            object-fit: cover;
+            display: block;
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
         }
 
@@ -106,47 +137,64 @@
             justify-content: center;
             gap: 12px;
             padding: 16px; 
-            border-radius: 20px;
             font-size: 13px;
             font-weight: 700;
             text-decoration: none;
             width: 100%;
             box-sizing: border-box;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .btn i {
             font-size: 15px;
         }
 
-        .btn-neon {
-            color: #05070c;
-            background: #00f2fe;
-            border: 1px solid #00f2fe;
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.25);
+        .btn-primary {
+            background: #00f0ff; 
+            color: #000000;
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 0 0px rgba(0, 240, 255, 0);
+            transition: 
+                transform 0.15s cubic-bezier(0.2, 0, 0, 1), 
+                box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1),
+                background-color 0.2s ease;
         }
 
-        .btn-neon:hover {
-            transform: translateY(-3px) scale(1.01);
-            background: #ffffff;
-            border-color: #ffffff;
-            box-shadow: 0 12px 30px rgba(0, 242, 254, 0.5);
+        .btn-primary:hover {
+            transform: translateY(-1px) scale(1.015); 
+            background: #26f4ff; 
+            box-shadow: 0 8px 24px rgba(0, 240, 255, 0.35); 
         }
 
-        .btn-outline {
+        .btn-primary:active {
+            transform: translateY(1px) scale(0.98);
+            box-shadow: 0 2px 8px rgba(0, 240, 255, 0.2);
+            transition: transform 0.05s linear; 
+        }
+
+        .btn-secondary {
+            background: transparent;
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(0, 242, 254, 0.25);
+            border: 1px solid rgba(0, 240, 255, 0.3); 
+            border-radius: 16px;
+            transition: 
+                border-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+                background-color 0.2s cubic-bezier(0.2, 0, 0, 1),
+                transform 0.15s cubic-bezier(0.2, 0, 0, 1);
         }
 
-        .btn-outline:hover {
-            transform: translateY(-3px) scale(1.01);
-            background: rgba(0, 242, 254, 0.04);
-            border-color: #00f2fe;
-            color: #00f2fe;
-            box-shadow: 0 6px 20px rgba(0, 242, 254, 0.2);
+        .btn-secondary:hover {
+            border-color: rgba(0, 240, 255, 1); 
+            background: rgba(0, 240, 255, 0.03); 
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(1px) scale(0.99);
+            background: rgba(0, 240, 255, 0.08);
+            transition: transform 0.05s linear;
         }
 
         @media (max-width: 600px) {
@@ -156,7 +204,7 @@
                 border-radius: 24px; 
             }
 
-            .avatar {
+            .avatar-wrap {
                 width: 110px; 
                 height: 110px;
                 min-height: 110px;
@@ -177,7 +225,7 @@
             .btn {
                 padding: 17px; 
                 font-size: 13px;
-                border-radius: 16px;
+                border-radius: 14px;
             }
         }
     </style>
@@ -185,13 +233,15 @@
 <body>
 
     <div class="main-card">
-        <img class="avatar" src="logo.png" alt="4moder Logo">
+        <div class="avatar-wrap">
+            <img class="avatar" src="logo.png" alt="4moder Logo">
+        </div>
         <h1>4moder</h1>
         <p class="description">oneway4mo prime 😈</p>
 
         <div class="links-container">
-            <a href="#" class="btn btn-neon"><i class="fa-brands fa-twitch"></i> Подключить бота</a>
-            <a href="#" class="btn btn-outline"><i class="fa-solid fa-gear"></i> Панель управления</a>
+            <a href="#" class="btn btn-primary"><i class="fa-brands fa-twitch"></i> Подключить бота</a>
+            <a href="#" class="btn btn-secondary"><i class="fa-solid fa-gear"></i> Панель управления</a>
         </div>
     </div>
 
