@@ -48,11 +48,14 @@
         .avatar {
             width: 110px;
             height: 110px;
+            min-height: 110px; /* Защита от сжатия по вертикали */
+            min-width: 110px;  /* Защита от сжатия по горизонтали */
             border-radius: 50%;
             border: 3px solid #00f2fe;
             animation: neonPulse 3s infinite ease-in-out;
             margin-bottom: 20px;
             object-fit: cover;
+            display: inline-block;
         }
 
         h1 {
@@ -114,7 +117,7 @@
             box-shadow: 0 8px 25px rgba(0, 242, 254, 0.6);
         }
 
-        /* ─── РАЗДЕЛ ВСЕХ МОДУЛЕЙ И ФУНКЦИЙ ─── */
+        /* ─── ИСПРАВЛЕННЫЙ РАЗДЕЛ СЕТКИ ФУНКЦИЙ ─── */
         .section-title {
             text-align: center;
             font-size: 24px;
@@ -127,11 +130,12 @@
         }
 
         .features-grid {
-            max-width: 1000px;
-            width: 90%;
+            max-width: 1400px; /* Расширили для вмещения 4 карт */
+            width: 95%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            /* Изменили минимальную ширину карт, чтобы они влезали в ряд на ПК */
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 20px;
             margin-bottom: 50px;
         }
 
@@ -139,9 +143,10 @@
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 20px;
-            padding: 30px;
+            padding: 25px;
             backdrop-filter: blur(8px);
             transition: all 0.3s ease;
+            box-sizing: border-box;
         }
 
         .feature-card:hover {
@@ -158,7 +163,7 @@
         }
 
         .feature-card h3 {
-            font-size: 20px;
+            font-size: 19px;
             margin: 0 0 15px 0;
             color: #ffffff;
             font-weight: 700;
@@ -171,7 +176,7 @@
         }
 
         .feature-card li {
-            font-size: 13.5px;
+            font-size: 13px;
             color: #9aa0a6;
             margin-bottom: 10px;
             line-height: 1.5;
@@ -182,7 +187,7 @@
 
         .feature-card li i {
             color: #00f2fe;
-            font-size: 11px;
+            font-size: 10px;
             margin-top: 4px;
         }
     </style>
@@ -191,7 +196,8 @@
 
     <!-- Главная визитка (Стиль Lamperouge) -->
     <div class="main-card">
-        <img class="avatar" src="https://twitch.tv" alt="4moder Logo">
+        <!-- Чтобы вставить свое лого, замените 'logo.png' на имя вашей картинки -->
+        <img class="avatar" src="logo.png" alt="4moder Logo">
         <h1>4moder Bot</h1>
         <p class="description">Абсолютное слияние возможностей. Полная замена Lamperouge, Nightbot, Fossabot, StreamElements и Wizebot в одной сверхбыстрой панели.</p>
 
@@ -204,50 +210,50 @@
 
     <h2 class="section-title">Полная карта функционала</h2>
 
-    <!-- Сетка абсолютно всех категорий и функций -->
+    <!-- Сетка абсолютно всех категорий (Теперь стоит ровно) -->
     <div class="features-grid">
         
         <!-- Категория 1: Модерация и Защита чата -->
         <div class="feature-card">
             <div class="feature-icon"><i class="fa-solid fa-shield-cat"></i></div>
-            <h3>Модерация и Безопасность</h3>
+            <h3>Модерация чата</h3>
             <ul>
-                <li><i class="fa-solid fa-check"></i> <b>Умные фильтры:</b> Защита от спама ссылками, капсом, смайлами, длинными сообщениями и повторяющимся текстом.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Черные списки (Banned Words):</b> Поддержка регулярных выражений (RegEx) для блокировки сложных обходов мата.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Авто-наказания:</b> Настраиваемая цепочка мер (Варн -> Удаление строки -> Таймаут -> Бан).</li>
-                <li><i class="fa-solid fa-check"></i> <b>Продвинутый Пермит:</b> Временное разрешение конкретным зрителям отправлять ссылки (`!permit`).</li>
+                <li><i class="fa-solid fa-check"></i> <b>Умные фильтры:</b> Защита от спама ссылками, капсом, смайлами и длинными сообщениями.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Черные списки (RegEx):</b> Поддержка регулярных выражений для блокировки обходов мата.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Авто-наказания:</b> Настраиваемая цепочка мер (Варн -> Таймаут -> Бан).</li>
+                <li><i class="fa-solid fa-check"></i> <b>Продвинутый Пермит:</b> Временное разрешение отправлять ссылки через `!permit`.</li>
             </ul>
         </div>
 
         <!-- Категория 2: Конструктор команд -->
         <div class="feature-card">
             <div class="feature-icon"><i class="fa-solid fa-code"></i></div>
-            <h3>Кастомные Команды и API</h3>
+            <h3>Команды и API</h3>
             <ul>
-                <li><i class="fa-solid fa-check"></i> <b>Динамические переменные:</b> Десятки переменных (аптайм, фолловаж, инфа о стриме, погода, счетчики).</li>
-                <li><i class="fa-solid fa-check"></i> <b>Уровни доступа:</b> Жесткие лимиты на использование (Стример, Модератор, VIP, Саб, Все).</li>
-                <li><i class="fa-solid fa-check"></i> <b>Кастомные кулдауны:</b> Настройка глобального и пользовательского времени перезарядки для каждой команды.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Интеграция сторонних API:</b> Запросы через `$(urlfetch)` для вывода любых данных из сети.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Переменные:</b> Аптайм, фолловаж, инфа о стриме, погода, счетчики.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Уровни доступа:</b> Лимиты на использование (Стример, Модератор, VIP, Саб, Все).</li>
+                <li><i class="fa-solid fa-check"></i> <b>Кулдауны:</b> Настройка глобального и пользовательского времени перезарядки.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Запросы API:</b> Использование переменной `$(urlfetch)` для вывода внешних данных.</li>
             </ul>
         </div>
 
         <!-- Категория 3: Система лояльности -->
         <div class="feature-card">
             <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
-            <h3>Экономика и Баллы лояльности</h3>
+            <h3>Баллы и Экономика</h3>
             <ul>
-                <li><i class="fa-solid fa-check"></i> <b>Поинты за просмотр:</b> Гибкое начисление валюты бота активным зрителям и фолловерам.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Магазин наград (Store):</b> Полноценная витрина в чате, где зрители могут покупать роли, заказывать услуги или интерактивы.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Чат-игры и Гэмблинг:</b> Ставки на исход матчей, дуэли между зрителями (`!duel`), рулетка, слоты и ограбления банков.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Рейтинги и Топы:</b> Списки лидеров по поинтам, времени просмотра и сообщениям (`!top`).</li>
+                <li><i class="fa-solid fa-check"></i> <b>Поинты за просмотр:</b> Гибкое начисление валюты активным зрителям чата.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Магазин наград:</b> Витрина в чате для покупки ролей и интерактивов за баллы.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Чат-игры:</b> Ставки на исход матчей, дуэли (`!duel`), рулетка и слоты.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Рейтинги и Топы:</b> Списки лидеров по поинтам и времени просмотра (`!top`).</li>
             </ul>
         </div>
 
         <!-- Категория 4: Утилиты, Виджеты и Оповещения -->
         <div class="feature-card">
             <div class="feature-icon"><i class="fa-solid fa-bell"></i></div>
-            <h3>Утилиты и Автоматизация</h3>
+            <h3>Автоматизация</h3>
             <ul>
-                <li><i class="fa-solid fa-check"></i> <b>Умные Таймеры:</b> Автоматические сообщения в чат по времени или количеству строк (для рекламы, соцсетей).</li>
-                <li><i class="fa-solid fa-check"></i> <b>Розыгрыши (Giveaways):</b> Мощный модуль розыгрышей среди ключевых слов с билетами за баллы канала или сабки.</li>
-                <li><i class="fa-solid fa-check"></i> <b>Песенная очередь (Song Request):</b> Заказ треков зрителями через YouTube/Spotify с фильтрацией по лайкам и длине.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Умные Таймеры:</b> Автоматические сообщения в чат по времени или количеству строк.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Розыгрыши (Giveaways):</b> Модуль розыгрышей с билетами за баллы или сабки.</li>
+                <li><i class="fa-solid fa-check"></i> <b>Заказ песен:</b> Очередь треков через YouTube/Spotify с фильтрацией длины.</li>
