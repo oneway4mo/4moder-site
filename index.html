@@ -6,11 +6,10 @@
     <title>4moder — oneway4mo prime</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* Ультра-плавная анимация «дыхания» света через прозрачность */
         @keyframes masterGlow {
-            0% { opacity: 0.2; }
-            50% { opacity: 0.6; }
-            100% { opacity: 0.2; }
+            0% { opacity: 0.15; transform: translate(-50%, -50%) scale(0.95); }
+            50% { opacity: 0.45; transform: translate(-50%, -50%) scale(1.05); }
+            100% { opacity: 0.15; transform: translate(-50%, -50%) scale(0.95); }
         }
 
         body {
@@ -28,23 +27,21 @@
             position: relative;
         }
 
-        /* Неподвижное неоновое облако с идеально плавной пульсацией */
         body::before {
             content: '';
             position: absolute;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(3, 28, 38, 0.4) 40%, rgba(0,0,0,0) 70%);
+            width: 750px;
+            height: 750px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, rgba(3, 28, 38, 0.3) 45%, rgba(0,0,0,0) 75%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 0;
-            animation: masterGlow 10s ease-in-out infinite;
+            animation: masterGlow 12s cubic-bezier(0.25, 1, 0.5, 1) infinite;
             pointer-events: none;
-            will-change: opacity;
+            will-change: opacity, transform;
         }
 
-        /* Дорогая матовая карточка с тонкой границей */
         .main-card {
             text-align: center;
             max-width: 460px; 
@@ -62,7 +59,7 @@
 
         @keyframes neonPulse {
             0% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.2); border-color: #00f2fe; }
-            50% { box-shadow: 0 0 25px rgba(0, 242, 254, 0.4); border-color: #00e5ff; }
+            50% { box-shadow: 0 0 30px rgba(0, 242, 254, 0.5); border-color: #00e5ff; }
             100% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.2); border-color: #00f2fe; }
         }
 
@@ -73,7 +70,7 @@
             min-width: 110px;
             border-radius: 50%;
             border: 3px solid #00f2fe;
-            animation: neonPulse 4s infinite ease-in-out;
+            animation: neonPulse 5s cubic-bezier(0.25, 1, 0.5, 1) infinite;
             margin-bottom: 25px;
             object-fit: cover;
             display: inline-block;
@@ -117,7 +114,7 @@
             box-sizing: border-box;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .btn i {
@@ -132,10 +129,10 @@
         }
 
         .btn-neon:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.01);
             background: #ffffff;
             border-color: #ffffff;
-            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.45);
+            box-shadow: 0 12px 30px rgba(0, 242, 254, 0.5);
         }
 
         .btn-outline {
@@ -145,11 +142,11 @@
         }
 
         .btn-outline:hover {
-            transform: translateY(-2px);
-            background: rgba(0, 242, 254, 0.03);
+            transform: translateY(-3px) scale(1.01);
+            background: rgba(0, 242, 254, 0.04);
             border-color: #00f2fe;
             color: #00f2fe;
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.15);
+            box-shadow: 0 6px 20px rgba(0, 242, 254, 0.2);
         }
 
         @media (max-width: 600px) {
