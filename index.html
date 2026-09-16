@@ -9,8 +9,7 @@
     <title>4moder — oneway4mo prime</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* Плавный фоновый неоновый туман */
-        @keyframes bgPulse {
+        @keyframes bgMotion {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
@@ -19,9 +18,9 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #020204, #0a0414, #040406, #11021f, #020204);
+            background: linear-gradient(135deg, #020204, #0d0517, #040406, #140324, #020204);
             background-size: 300% 300%;
-            animation: bgPulse 20s ease-in-out infinite;
+            animation: bgMotion 20s ease-in-out infinite;
             color: #ffffff;
             font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
             display: flex;
@@ -32,8 +31,7 @@
             box-sizing: border-box;
         }
 
-        /* Главный контейнер, который держит форму идеального круга */
-        .wrapper {
+        .master-wrapper {
             position: relative;
             width: 100%;
             max-width: 500px;
@@ -44,21 +42,21 @@
             box-sizing: border-box;
         }
 
-        /* Живой векторный Смайл Демона на фоне */
-        .devil-svg {
+        /* 😈 ОРИГИНАЛЬНЫЙ СМАЙЛИК ДЕМОНА НА ФОНЕ */
+        .devil-canvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 1;
-            filter: drop-shadow(0 15px 40px rgba(139, 24, 227, 0.5));
+            filter: drop-shadow(0 15px 40px rgba(139, 24, 227, 0.55));
         }
 
-        /* Блок с твоим контентом — ТЕПЕРЬ СИДИТ СТРОГО НА ЛБУ И НЕ ЛЕЗЕТ НА ГЛАЗА */
-        .content-box {
+        /* КОНТЕНТ СТРОГО НА ЛБУ ЧЕРТА */
+        .ui-box {
             position: absolute;
-            top: 32%; /* Ювелирная посадка на лбу */
+            top: 31%; /* Идеальная лобная посадка */
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 2;
@@ -85,7 +83,8 @@
             animation: avatarGlow 4s infinite ease-in-out;
             margin-bottom: 10px;
             object-fit: cover;
-            background: #000;
+            background: #000000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
         h1 {
@@ -100,19 +99,18 @@
         .description {
             font-size: 14px;
             color: #ffffff;
-            margin: 0 0 15px 0;
+            margin: 0 0 20px 0;
             font-weight: 700;
             letter-spacing: 0.5px;
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
-        /* Компактная стильная кнопка из темного стекла */
         .btn-panel {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px 20px; 
+            padding: 13px 20px; 
             color: #ffffff;
             text-decoration: none;
             background: rgba(0, 0, 0, 0.5); 
@@ -120,7 +118,7 @@
             border-radius: 12px;
             font-size: 13px;
             font-weight: 800;
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
             width: 100%;
             box-sizing: border-box;
@@ -133,73 +131,61 @@
             background: #ffffff;
             color: #4a0080;
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6);
-            border-color: #ffffff;
         }
 
-        /* Адаптация под экраны мобильных телефонов */
         @media (max-width: 600px) {
-            .wrapper {
-                max-width: 90%;
-            }
-            .content-box {
-                top: 31%; /* Корректировка высоты на мобилке */
-            }
-            .avatar {
-                width: 70px;
-                height: 70px;
-                min-height: 70px;
-                min-width: 70px;
-                margin-bottom: 6px;
-            }
+            .master-wrapper { max-width: 90%; margin-top: -25px; }
+            .ui-box { top: 30.5%; }
+            .avatar { width: 72px; height: 72px; min-height: 72px; min-width: 72px; }
             h1 { font-size: 26px; }
             .description { font-size: 12px; margin-bottom: 12px; }
-            .btn-panel { padding: 10px; font-size: 11px; border-radius: 10px; }
+            .btn-panel { padding: 11px; font-size: 11px; border-radius: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <!-- 😈 ВЕКТОРНЫЙ ДЕМОН 1 В 1 С КАНОНИЧНЫМИ ПРОПОРЦИЯМИ ТВИЧА -->
-        <svg class="devil-svg" viewBox="0 0 500 500" xmlns="http://w3.org">
+    <div class="master-wrapper">
+        <!-- 😈 ВЫВЕРЕННЫЙ ГЕОМЕТРИЧЕСКИЙ ВЕКТОР ЧЕРТИКА -->
+        <svg class="devil-canvas" viewBox="0 0 500 500" xmlns="http://w3.org">
             <defs>
-                <!-- Объемный фиолетовый 3D сферический градиент для круглой головы -->
-                <radialGradient id="devilBg" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
-                    <stop offset="0%" stop-color="#9b3eff" />
-                    <stop offset="70%" stop-color="#5907a3" />
-                    <stop offset="100%" stop-color="#2a0252" />
+                <!-- Объемный сферический 3D градиент для круглой головы -->
+                <radialGradient id="faceGradient" cx="45%" cy="40%" r="55%" fx="35%" fy="30%">
+                    <stop offset="0%" stop-color="#ab4eff" />
+                    <stop offset="65%" stop-color="#5a0ca3" />
+                    <stop offset="100%" stop-color="#220042" />
                 </radialGradient>
                 <!-- Градиент для объемных ушек-рогов -->
-                <linearGradient id="hornGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#2a0252" />
-                    <stop offset="50%" stop-color="#5907a3" />
-                    <stop offset="100%" stop-color="#9b3eff" />
+                <linearGradient id="hornGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#220042" />
+                    <stop offset="50%" stop-color="#5a0ca3" />
+                    <stop offset="100%" stop-color="#ab4eff" />
                 </linearGradient>
             </defs>
 
-            <!-- Левый каноничный рог -->
-            <path d="M 150,140 C 130,60 70,30 25,45 C 55,75 85,115 100,160 Z" fill="url(#hornGrad)" stroke="#1a0133" stroke-width="3" />
+            <!-- Левый рог -->
+            <path d="M 160,150 C 130,70 70,45 25,60 C 55,90 85,125 100,170 Z" fill="url(#hornGradient)" stroke="#16002b" stroke-width="3" />
             
-            <!-- Правый каноничный рог (идеальное зеркало) -->
-            <path d="M 350,140 C 370,60 430,30 475,45 C 445,75 415,115 400,160 Z" fill="url(#hornGrad)" stroke="#1a0133" stroke-width="3" />
+            <!-- Правый рог -->
+            <path d="M 340,150 C 370,70 420,45 475,60 C 445,90 415,125 400,170 Z" fill="url(#hornGradient)" stroke="#16002b" stroke-width="3" />
 
-            <!-- Правильный ровный круг головы -->
-            <circle cx="250" cy="275" r="190" fill="url(#devilBg)" stroke="#1a0133" stroke-width="4" />
+            <!-- Круглая голова -->
+            <circle cx="250" cy="275" r="185" fill="url(#faceGradient)" stroke="#16002b" stroke-width="4" />
 
-            <!-- 😠 АГРЕССИВНЫЕ БРОВИ ИЗ ЭМОДЗИ (смещены вниз, освобождая лоб) -->
-            <path d="M 105,290 C 135,275 165,275 195,295" stroke="#140026" stroke-width="12" stroke-linecap="round" fill="none" />
-            <path d="M 395,290 C 365,275 335,275 305,295" stroke="#140026" stroke-width="12" stroke-linecap="round" fill="none" />
+            <!-- 😠 ЗЛЫЕ БРОВИ (Точный наклон Твич-демона) -->
+            <path d="M 115,285 C 145,270 170,270 195,290" stroke="#110021" stroke-width="11" stroke-linecap="round" fill="none" />
+            <path d="M 385,285 C 355,270 330,270 305,290" stroke="#110021" stroke-width="11" stroke-linecap="round" fill="none" />
 
-            <!-- 👁️ ГЛАЗА ЧЕРТИКА (Фирменный коварный прищур под бровями) -->
-            <path d="M 120,325 C 145,310 170,310 185,330 C 160,340 135,340 120,325 Z" fill="#140026" />
-            <path d="M 380,325 C 355,310 330,310 315,330 C 340,340 365,340 380,325 Z" fill="#140026" />
+            <!-- 👁️ ГЛАЗА С ПРИЩУРОМ -->
+            <path d="M 125,320 C 145,305 170,305 185,325 C 160,335 135,335 125,320 Z" fill="#110021" />
+            <path d="M 375,320 C 355,305 330,305 315,325 C 340,335 365,335 375,320 Z" fill="#110021" />
 
-            <!-- 😏 ЗЛОВЕЩАЯ ДЬЯВОЛЬСКАЯ УЛЫБКА (В самом низу круга) -->
-            <path d="M 155,405 C 250,470 345,405 250,425 Z" fill="#140026" />
+            <!-- 😏 ДЬЯВОЛЬСКАЯ УЛЫБКА ВНИЗУ -->
+            <path d="M 165,400 C 250,460 335,400 250,420 Z" fill="#110021" />
         </svg>
 
-        <!-- КОНТЕНТ: СИДИТ КРАСИВО И СТРОГО НА ЛБУ -->
-        <div class="content-box">
+        <!-- ТВОЙ ИНТЕРФЕЙС НА ЛБУ ЧЕРТА -->
+        <div class="ui-box">
             <img class="avatar" src="logo.png" alt="4moder Logo">
             <h1>4moder</h1>
             <p class="description">oneway4mo prime 😈</p>
