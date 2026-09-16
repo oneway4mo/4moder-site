@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -7,581 +6,344 @@
 
     <title>4moder — oneway4mo prime</title>
 
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
-
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-
-
-        /* ==========================================
-           БАЗА
-           ========================================== */
 
         html,
         body {
             width: 100%;
             min-height: 100%;
-            margin: 0;
         }
-
 
         body {
-            position: relative;
-            isolation: isolate;
-
             min-height: 100vh;
-
             display: flex;
-            justify-content: center;
             align-items: center;
-
-            overflow: hidden;
+            justify-content: center;
+            padding: 30px;
 
             background: #040508;
+            color: #ffffff;
 
-            color: #f5f5f7;
+            font-family: Arial, Helvetica, sans-serif;
 
-            font-family:
-                'Inter',
-                'Segoe UI',
-                Helvetica,
-                Arial,
-                sans-serif;
+            overflow-x: hidden;
+            position: relative;
+
+            animation: backgroundBreathing 14s ease-in-out infinite;
         }
 
-
-        /* ==========================================
-           МЯГКОЕ СВЕЧЕНИЕ
-
-           Здесь НЕТ:
-           - moving gradient
-           - background-position
-           - полос
-           - волн
-           - перемещения цветных слоёв
-
-           Свет находится за пределами экрана
-           и только слегка "дышит".
-           ========================================== */
-
-
+        /* Очень мягкая статичная подсветка.
+           Ничего не двигается — поэтому никаких волн и полос. */
         body::before {
             content: "";
-
             position: fixed;
+            z-index: 0;
 
-            z-index: -2;
+            width: 160vw;
+            height: 160vw;
 
             left: 50%;
             top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0, 242, 254, 0.035) 0%,
+                    rgba(0, 150, 190, 0.018) 25%,
+                    transparent 60%
+                );
+
+            filter: blur(100px);
+            pointer-events: none;
+
+            animation: glowOpacity 16s ease-in-out infinite;
+        }
+
+        /* Вторая практически незаметная подсветка */
+        body::after {
+            content: "";
+            position: fixed;
+            z-index: 0;
 
             width: 180vw;
             height: 180vw;
 
-            transform: translate(-50%, -50%);
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(0, 150, 190, 0.095) 0%,
-                    rgba(0, 120, 160, 0.055) 18%,
-                    rgba(0, 90, 130, 0.025) 34%,
-                    transparent 62%
-                );
-
-            filter: blur(100px);
-
-            opacity: 0.72;
-
-            animation:
-                softBreathing 18s ease-in-out infinite;
-        }
-
-
-        body::after {
-            content: "";
-
-            position: fixed;
-
-            z-index: -3;
-
             left: 50%;
             top: 50%;
 
-            width: 200vw;
-            height: 200vw;
-
             transform: translate(-50%, -50%);
-
-            border-radius: 50%;
 
             background:
                 radial-gradient(
-                    circle at center,
-                    rgba(35, 55, 120, 0.035) 0%,
-                    rgba(35, 55, 120, 0.018) 28%,
+                    circle,
+                    rgba(0, 100, 180, 0.025) 0%,
                     transparent 58%
                 );
 
-            filter: blur(130px);
+            filter: blur(140px);
+            pointer-events: none;
 
-            opacity: 0.65;
-
-            animation:
-                softBreathing2 26s ease-in-out infinite;
+            animation: glowOpacity2 22s ease-in-out infinite;
         }
 
-
-        @keyframes softBreathing {
-
+        @keyframes backgroundBreathing {
             0%,
             100% {
-                transform:
-                    translate(-50%, -50%)
-                    scale(0.97);
-
-                opacity: 0.65;
+                background-color: #040508;
             }
 
             50% {
-                transform:
-                    translate(-50%, -50%)
-                    scale(1.03);
-
-                opacity: 0.80;
+                background-color: #05080b;
             }
         }
 
-
-        @keyframes softBreathing2 {
-
+        @keyframes glowOpacity {
             0%,
             100% {
-                transform:
-                    translate(-50%, -50%)
-                    scale(0.985);
-
-                opacity: 0.58;
+                opacity: 0.55;
             }
 
             50% {
-                transform:
-                    translate(-50%, -50%)
-                    scale(1.015);
-
-                opacity: 0.72;
+                opacity: 0.8;
             }
         }
 
+        @keyframes glowOpacity2 {
+            0%,
+            100% {
+                opacity: 0.45;
+            }
 
-        /* ==========================================
-           КАРТОЧКА
-           ========================================== */
+            50% {
+                opacity: 0.7;
+            }
+        }
 
         .main-card {
-
-            text-align: center;
-
-            max-width: 720px;
+            position: relative;
+            z-index: 1;
 
             width: 90%;
+            max-width: 720px;
 
             padding: 80px 70px;
 
-            background:
-                rgba(255, 255, 255, 0.012);
-
-            border:
-                1px solid rgba(255, 255, 255, 0.045);
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.09);
 
             border-radius: 36px;
 
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
 
             box-shadow:
-                0 30px 70px rgba(0, 0, 0, 0.75);
+                0 30px 80px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
-            position: relative;
-
-            z-index: 5;
+            text-align: center;
         }
-
-
-        /* ==========================================
-           АВАТАР
-           ========================================== */
 
         .avatar {
             width: 130px;
             height: 130px;
 
-            min-width: 130px;
-            min-height: 130px;
+            margin: 0 auto 28px;
 
             border-radius: 50%;
 
-            border:
-                3px solid #00f2fe;
-
-            animation:
-                neonPulse 4s ease-in-out infinite;
-
-            margin-bottom: 28px;
-
             object-fit: cover;
 
-            display: inline-block;
+            border: 3px solid #00f2fe;
+
+            box-shadow:
+                0 0 20px rgba(0, 242, 254, 0.35);
+
+            animation: neonPulse 4s ease-in-out infinite;
         }
 
-
         @keyframes neonPulse {
-
-            0% {
+            0%,
+            100% {
                 box-shadow:
-                    0 0 20px rgba(0, 242, 254, 0.25);
-
-                border-color:
-                    #00eaf5;
+                    0 0 18px rgba(0, 242, 254, 0.25);
             }
 
             50% {
                 box-shadow:
-                    0 0 32px rgba(0, 242, 254, 0.48);
-
-                border-color:
-                    #00f2fe;
-            }
-
-            100% {
-                box-shadow:
-                    0 0 20px rgba(0, 242, 254, 0.25);
-
-                border-color:
-                    #00eaf5;
+                    0 0 30px rgba(0, 242, 254, 0.45);
             }
         }
-
-
-        /* ==========================================
-           ЗАГОЛОВОК
-           ========================================== */
 
         h1 {
-
             font-size: 58px;
+            line-height: 1.05;
 
-            margin:
-                0 0 14px 0;
+            margin-bottom: 18px;
 
             font-weight: 800;
+            letter-spacing: -2px;
+
+            color: #ffffff;
 
             text-shadow:
-                0 0 20px rgba(0, 242, 254, 0.25);
-
-            letter-spacing: -1px;
+                0 0 18px rgba(0, 242, 254, 0.25);
         }
-
-
-        /* ==========================================
-           ОПИСАНИЕ
-           ========================================== */
 
         .description {
-
             font-size: 22px;
+            line-height: 1.5;
 
-            color:
-                #efeff1;
+            color: rgba(255, 255, 255, 0.65);
 
-            margin:
-                0 0 50px 0;
-
-            font-weight: 600;
-
-            letter-spacing: 0.5px;
+            margin-bottom: 42px;
         }
 
-
-        /* ==========================================
-           КНОПКИ
-           ========================================== */
-
-        .links-container {
-
-            width: 100%;
-
+        .buttons {
             display: flex;
-
             flex-direction: column;
-
             gap: 16px;
         }
 
-
-        .btn {
+        .button {
+            width: 100%;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
+            gap: 12px;
 
-            gap: 14px;
+            min-height: 62px;
 
-            padding: 20px;
+            padding: 16px 24px;
 
-            border-radius: 18px;
+            border-radius: 16px;
 
-            font-size: 17px;
-
+            font-size: 18px;
             font-weight: 700;
 
             text-decoration: none;
 
-            width: 100%;
-
-            box-sizing: border-box;
-
             transition:
-                transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-                background 0.25s ease,
-                border-color 0.25s ease,
-                box-shadow 0.25s ease,
-                color 0.25s ease;
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
         }
 
-
-        /* ==========================================
-           ИКОНКИ
-           ========================================== */
-
-        .btn i {
-            font-size: 18px;
+        .button:hover {
+            transform: translateY(-2px);
         }
 
+        .button.primary {
+            color: #001014;
 
-        /* ==========================================
-           ОСНОВНАЯ КНОПКА
-           ========================================== */
-
-        .btn-neon {
-
-            color:
-                #071014;
-
-            background:
-                #00f2fe;
-
-            border:
-                1px solid #00f2fe;
+            background: #00f2fe;
 
             box-shadow:
-                0 4px 20px rgba(0, 242, 254, 0.30);
+                0 10px 30px rgba(0, 242, 254, 0.18);
         }
 
-
-        .btn-neon:hover {
-
-            transform:
-                translateY(-3px);
-
-            background:
-                #ffffff;
-
-            border-color:
-                #ffffff;
-
-            color:
-                #0b0c10;
+        .button.primary:hover {
+            background: #26f4ff;
 
             box-shadow:
-                0 12px 35px rgba(0, 242, 254, 0.55);
+                0 14px 35px rgba(0, 242, 254, 0.28);
         }
 
+        .button.secondary {
+            color: #ffffff;
 
-        /* ==========================================
-           ВТОРАЯ КНОПКА
-           ========================================== */
+            background: rgba(255, 255, 255, 0.035);
 
-        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
 
-            color:
-                #ffffff;
-
-            background:
-                rgba(255, 255, 255, 0.012);
-
-            border:
-                1px solid rgba(0, 242, 254, 0.35);
+        .button.secondary:hover {
+            background: rgba(255, 255, 255, 0.07);
 
             box-shadow:
-                0 0 10px rgba(0, 242, 254, 0.05);
+                0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-
-        .btn-outline:hover {
-
-            transform:
-                translateY(-3px);
-
-            background:
-                rgba(0, 242, 254, 0.035);
-
-            border-color:
-                #00f2fe;
-
-            color:
-                #00f2fe;
-
-            box-shadow:
-                0 6px 20px rgba(0, 242, 254, 0.25);
+        .button i {
+            font-size: 20px;
         }
-
-
-        /* ==========================================
-           MOBILE
-           ========================================== */
 
         @media (max-width: 600px) {
+            body {
+                padding: 18px;
+            }
 
             .main-card {
-
-                width: 78%;
-
-                padding:
-                    75px 25px;
-
-                border-radius:
-                    32px;
+                width: 100%;
+                padding: 55px 25px;
+                border-radius: 28px;
             }
-
 
             .avatar {
-
-                width: 115px;
-                height: 115px;
-
-                min-width: 115px;
-                min-height: 115px;
-
-                margin-bottom:
-                    35px;
+                width: 105px;
+                height: 105px;
+                margin-bottom: 24px;
             }
-
 
             h1 {
-
-                font-size:
-                    38px;
-
-                margin-bottom:
-                    12px;
+                font-size: 42px;
+                letter-spacing: -1.5px;
             }
-
 
             .description {
-
-                font-size:
-                    17px;
-
-                margin-bottom:
-                    65px;
+                font-size: 18px;
+                margin-bottom: 32px;
             }
 
-
-            .btn {
-
-                padding:
-                    18px;
-
-                font-size:
-                    16px;
-
-                border-radius:
-                    18px;
+            .button {
+                min-height: 58px;
+                font-size: 17px;
             }
         }
-
-
-        /* ==========================================
-           REDUCED MOTION
-           ========================================== */
-
-        @media (prefers-reduced-motion: reduce) {
-
-            body::before,
-            body::after,
-            .avatar {
-
-                animation:
-                    none;
-            }
-
-            .btn {
-
-                transition:
-                    none;
-            }
-        }
-
     </style>
 </head>
 
-
 <body>
 
-    <div class="main-card">
+    <main class="main-card">
 
         <img
             class="avatar"
-            src="logo.png"
-            alt="4moder Logo"
+            src="https://i.imgur.com/your-image.png"
+            alt="oneway4mo"
         >
 
-
-        <h1>
-            4moder
-        </h1>
-
+        <h1>4moder</h1>
 
         <p class="description">
-            oneway4mo prime 😈
+            oneway4mo prime
         </p>
 
+        <div class="buttons">
 
-        <div class="links-container">
-
-            <a
-                href="#"
-                class="btn btn-neon"
-            >
+            <a href="#" class="button primary">
                 <i class="fa-brands fa-twitch"></i>
                 Подключить бота
             </a>
 
-
-            <a
-                href="#"
-                class="btn btn-outline"
-            >
-                <i class="fa-solid fa-chart-simple"></i>
+            <a href="#" class="button secondary">
+                <i class="fa-solid fa-gear"></i>
                 Панель управления
             </a>
 
         </div>
 
-    </div>
+    </main>
 
 </body>
 </html>
-```
