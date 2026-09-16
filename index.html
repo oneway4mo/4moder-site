@@ -16,7 +16,6 @@
         body {
             margin: 0;
             padding: 0;
-            /* Размытые глубокие неоновые цвета для мягкого градиента */
             background: linear-gradient(135deg, #040508, #0b0c10, #031c26, #0b0c10, #05070a);
             background-size: 300% 300%;
             animation: slowGradient 20s cubic-bezier(0.4, 0, 0.2, 1) infinite;
@@ -27,9 +26,10 @@
             align-items: center;
             min-height: 100vh;
             overflow: hidden;
+            box-sizing: border-box;
         }
 
-        /* Большая, солидная карточка строго по центру */
+        /* Базовые стили карточки для ПК */
         .main-card {
             text-align: center;
             max-width: 480px; 
@@ -38,8 +38,9 @@
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 28px;
-            backdrop-filter: blur(15px); /* Эффект матового стекла */
+            backdrop-filter: blur(15px);
             box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
         }
 
         /* Мягкий пульс для аватарки */
@@ -82,7 +83,6 @@
             width: 100%;
         }
 
-        /* Сплошная мощная неоновая кнопка */
         .btn-neon {
             display: flex;
             align-items: center;
@@ -109,18 +109,49 @@
             color: #0b0c10;
             box-shadow: 0 10px 30px rgba(0, 242, 254, 0.6);
         }
+
+        /* 📱 НАСТРОЙКА ТОЛЬКО ДЛЯ ТЕЛЕФОНОВ (ширина экрана меньше 600px) */
+        @media (max-width: 600px) {
+            .main-card {
+                width: 85%; /* Делаем карточку уже, чтобы была компактнее по бокам */
+                padding: 65px 25px; /* Сильно увеличиваем вертикальные отступы — тянем вверх и вниз */
+                border-radius: 32px; /* Чуть сильнее закругляем углы для мобильного стиля */
+            }
+
+            .avatar {
+                width: 120px; /* На мобилках аватарку делаем даже чуть заметнее */
+                height: 120px;
+                min-height: 120px;
+                min-width: 120px;
+                margin-bottom: 30px; /* Больше отступ до имени */
+            }
+
+            h1 {
+                font-size: 38px; /* Немного уменьшаем шрифт, чтобы имя не ломало строки */
+                margin-bottom: 15px;
+            }
+
+            .description {
+                font-size: 17px;
+                margin-bottom: 55px; /* Делаем гигантский отступ до кнопки, вытягивая карточку вертикально */
+            }
+
+            .btn-neon {
+                padding: 20px; /* Кнопку на мобилке делаем жирнее, чтобы было мега-удобно нажимать */
+                font-size: 17px;
+                border-radius: 18px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Главная и единственная панель на экране -->
     <div class="main-card">
         <img class="avatar" src="logo.png" alt="4moder Logo">
         <h1>4moder</h1>
         <p class="description">oneway4mo prime 😈</p>
 
         <div class="links-container">
-            <!-- Когда будет готова ссылка от Твича, вставишь её вместо знака # -->
             <a href="#" class="btn btn-neon"><i class="fa-brands fa-twitch"></i> Панель управления</a>
         </div>
     </div>
