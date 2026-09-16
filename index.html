@@ -18,7 +18,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #030305, #10061c, #06060a, #160426, #030305);
+            background: linear-gradient(135deg, #020204, #0a0414, #040406, #0e021a, #020204);
             background-size: 300% 300%;
             animation: purpleFlow 20s ease-in-out infinite;
             color: #f5f5f7;
@@ -31,154 +31,143 @@
             box-sizing: border-box;
         }
 
+        /* Контейнер-оболочка всего демона */
         .wrapper {
             position: relative;
+            width: 100%;
+            max-width: 550px; /* Сделали шире, чтобы черт был массивным */
+            aspect-ratio: 1 / 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            max-width: 460px;
         }
 
-        /* 😈 ИСПРАВЛЕННЫЕ ОСТРЫЕ РОГА ЧЕРТА */
-        .devil-horns {
+        /* 😈 ЖИВОЙ СМАЙЛИК ДЕМОНА 1 В 1 (ВЕКТОРНЫЙ ЗАДНИЙ ФОН) */
+        .devil-face-svg {
             position: absolute;
-            top: -65px; /* Идеальная посадка рогов над краем панели */
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
+            height: 100%;
             z-index: 1;
-            pointer-events: none;
-            filter: drop-shadow(0 0 15px rgba(168, 38, 255, 0.9)) drop-shadow(0 0 35px rgba(168, 38, 255, 0.5));
+            /* Неоновое свечение всей головы */
+            filter: drop-shadow(0 10px 30px rgba(139, 24, 227, 0.4)) drop-shadow(0 0 50px rgba(139, 24, 227, 0.2));
         }
 
-        .devil-horns path {
-            stroke: #a826ff;
-            stroke-width: 5; /* Сделал линии жирнее и отчетливее */
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            fill: none;
-        }
-
-        .main-card {
-            text-align: center;
-            width: 90%;
-            padding: 50px 45px; 
-            background: rgba(10, 10, 13, 0.85);
-            border: 1px solid rgba(168, 38, 255, 0.2);
-            border-radius: 28px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.8), 0 0 40px rgba(168, 38, 255, 0.1);
+        /* Контент внутри лица демона (аватарка, текст, кнопка) */
+        .content-overlay {
             position: relative;
-            z-index: 2;
-            box-sizing: border-box;
+            z-index: 2; /* Поверх глаз и рта */
+            text-align: center;
+            width: 65%; /* Центрируем строго внутри круга головы */
+            margin-top: 35px; /* Смещаем контент чуть ниже бровей */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         @keyframes purplePulse {
-            0% { box-shadow: 0 0 20px rgba(168, 38, 255, 0.3); border-color: #a826ff; }
-            50% { box-shadow: 0 0 35px rgba(168, 38, 255, 0.6); border-color: #df99ff; }
-            100% { box-shadow: 0 0 20px rgba(168, 38, 255, 0.3); border-color: #a826ff; }
+            0% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); border-color: #ffffff; }
+            50% { box-shadow: 0 0 25px rgba(186, 85, 255, 0.5); border-color: #ba55ff; }
+            100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); border-color: #ffffff; }
         }
 
         .avatar {
-            width: 110px;
-            height: 110px;
-            min-height: 110px;
-            min-width: 110px;
+            width: 95px;
+            height: 95px;
+            min-height: 95px;
+            min-width: 95px;
             border-radius: 50%;
-            border: 3px solid #a826ff;
+            border: 3px solid #ffffff;
             animation: purplePulse 4s infinite ease-in-out;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             object-fit: cover;
-            display: inline-block;
+            background: #000;
         }
 
         h1 {
-            font-size: 42px;
-            margin: 0 0 10px 0; 
-            font-weight: 800;
-            text-shadow: 0 0 20px rgba(168, 38, 255, 0.3);
-            letter-spacing: -0.5px;
+            font-size: 36px;
+            margin: 0 0 4px 0; 
+            font-weight: 900;
             color: #ffffff;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
         .description {
-            font-size: 18px;
-            color: #efeff1;
-            margin: 0 0 35px 0;
-            font-weight: 600;
+            font-size: 15px;
+            color: #ffffff;
+            margin: 0 0 25px 0;
+            font-weight: 700;
             letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
         .links-container {
-            width: 100%;
+            width: 90%;
         }
 
+        /* Контрастная кнопка, выделяющаяся на фиолетовом лице */
         .btn-neon {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 18px; 
+            gap: 10px;
+            padding: 15px; 
             color: #ffffff;
             text-decoration: none;
-            background: #a826ff; 
-            border: 1px solid #a826ff;
-            border-radius: 16px;
-            font-size: 16px;
-            font-weight: 700;
+            background: rgba(0, 0, 0, 0.4); 
+            border: 2px solid #ffffff;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 800;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 20px rgba(168, 38, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             width: 100%;
             box-sizing: border-box;
+            backdrop-filter: blur(5px);
         }
 
         .btn-neon:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             background: #ffffff;
-            border-color: #ffffff;
-            color: #10061c;
-            box-shadow: 0 10px 30px rgba(168, 38, 255, 0.6);
+            color: #3a0066;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
         }
 
-        /* Мобилки: узко, рожки пропорционально встают на место */
+        /* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ ТЕЛЕФОНОВ */
         @media (max-width: 600px) {
             .wrapper {
-                width: 100%;
+                max-width: 92%; /* Зажимаем круг черта, чтобы влез на экран */
+                margin-top: -20px;
             }
 
-            .devil-horns {
-                top: -55px;
-                width: 92%;
-            }
-
-            .main-card {
-                width: 80% !important; /* Принудительно заужаем */
-                padding: 65px 25px !important;
-                border-radius: 24px;
+            .content-overlay {
+                margin-top: 15px; /* Корректируем контент под маленькую голову */
+                width: 70%;
             }
 
             .avatar {
-                width: 115px;
-                height: 115px;
-                min-height: 115px;
-                min-width: 115px;
-                margin-bottom: 30px;
+                width: 80px;
+                height: 80px;
+                min-height: 80px;
+                min-width: 80px;
+                margin-bottom: 8px;
             }
 
             h1 {
-                font-size: 38px;
-                margin-bottom: 12px;
+                font-size: 30px;
             }
 
             .description {
-                font-size: 17px;
-                margin-bottom: 60px;
+                font-size: 13px;
+                margin-bottom: 18px;
             }
 
             .btn-neon {
-                padding: 18px;
-                font-size: 16px;
+                padding: 12px;
+                font-size: 13px;
+                border-radius: 12px;
             }
         }
     </style>
@@ -186,15 +175,46 @@
 <body>
 
     <div class="wrapper">
-        <!-- Новый, симметричный чертеж острых рогов -->
-        <svg class="devil-horns" viewBox="0 0 400 200">
-            <!-- Левый рог: идет из центра вверх-влево и резко заменяется острым концом наружу -->
-            <path d="M 155,90 C 150,50 120,25 90,20 C 115,35 130,65 135,95" />
-            <!-- Правый рог: зеркальное отражение правого рога чертика -->
-            <path d="M 245,90 C 250,50 280,25 310,20 C 285,35 270,65 265,95" />
+        <!-- 😈 ВЕКТОРНАЯ СКЛЕЙКА: ФОРМА, РОГА, ГЛАЗА, БРОВИ И УЛЫБКА ДЕМОНА -->
+        <svg class="devil-face-svg" viewBox="0 0 500 500" xmlns="http://w3.org">
+            <defs>
+                <!-- Объемный сферический 3D-градиент для круглой головы, как на картинке -->
+                <radialGradient id="faceGrad" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+                    <stop offset="0%" stop-color="#a342ff" />
+                    <stop offset="75%" stop-color="#620cb0" />
+                    <stop offset="100%" stop-color="#360366" />
+                </radialGradient>
+                <!-- Градиент для объемных рогов -->
+                <linearGradient id="hornGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#360366" />
+                    <stop offset="50%" stop-color="#620cb0" />
+                    <stop offset="100%" stop-color="#a342ff" />
+                </linearGradient>
+            </defs>
+
+            <!-- Левый рог -->
+            <path d="M 160,150 C 130,80 80,40 30,55 C 60,85 90,120 105,165 Z" fill="url(#hornGrad)" stroke="#200140" stroke-width="2" />
+            
+            <!-- Правый рог (отзеркален) -->
+            <path d="M 340,150 C 370,80 420,40 470,55 C 440,85 410,120 395,165 Z" fill="url(#hornGrad)" stroke="#200140" stroke-width="2" />
+
+            <!-- Круглая голова черта -->
+            <circle cx="250" cy="270" r="185" fill="url(#faceGrad)" stroke="#200140" stroke-width="3" />
+
+            <!-- 😠 ЗЛЫЕ БРОВИ (Точный наклон к центру) -->
+            <path d="M 125,205 Q 165,200 195,225" stroke="#1d0036" stroke-width="10" stroke-linecap="round" fill="none" />
+            <path d="M 375,205 Q 335,200 305,225" stroke="#1d0036" stroke-width="10" stroke-linecap="round" fill="none" />
+
+            <!-- 👁️ ГЛАЗА (Коварный прищур Твич-эмодзи) -->
+            <path d="M 135,240 Q 165,225 185,245 Q 160,255 135,240 Z" fill="#1d0036" />
+            <path d="M 365,240 Q 335,225 315,245 Q 340,255 365,240 Z" fill="#1d0036" />
+
+            <!-- 😏 ЗЛОВЕЩАЯ УЛЫБКА ЧЕРТЕНКА (В самом низу под кнопкой) -->
+            <path d="M 160,400 Q 250,455 340,400 Q 250,420 160,400 Z" fill="#1d0036" />
         </svg>
 
-        <div class="main-card">
+        <!-- Контент, встроенный прямо «в лицо» демона -->
+        <div class="content-overlay">
             <img class="avatar" src="logo.png" alt="4moder Logo">
             <h1>4moder</h1>
             <p class="description">oneway4mo prime 😈</p>
