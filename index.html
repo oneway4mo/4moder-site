@@ -28,16 +28,18 @@
             box-sizing: border-box;
         }
 
+        /* Сильно увеличенный квадрат для ПК */
         .main-card {
             text-align: center;
-            max-width: 540px; 
-            width: 90%;
-            padding: 60px 50px; 
+            max-width: 580px; 
+            width: 95%;
+            padding: 65px 55px; 
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 32px;
             backdrop-filter: blur(15px);
             box-shadow: 0 25px 55px rgba(0, 0, 0, 0.7);
+            box-sizing: border-box;
         }
 
         @keyframes neonPulse {
@@ -47,10 +49,10 @@
         }
 
         .avatar {
-            width: 115px;
-            height: 115px;
-            min-height: 115px;
-            min-width: 115px;
+            width: 120px;
+            height: 120px;
+            min-height: 120px;
+            min-width: 120px;
             border-radius: 50%;
             border: 3px solid #00f2fe;
             animation: neonPulse 4s infinite ease-in-out;
@@ -60,7 +62,7 @@
         }
 
         h1 {
-            font-size: 46px;
+            font-size: 52px;
             margin: 0 0 12px 0; 
             font-weight: 800;
             text-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
@@ -68,34 +70,41 @@
         }
 
         .description {
-            font-size: 19px;
+            font-size: 20px;
             color: #efeff1;
-            margin: 0 0 40px 0;
+            margin: 0 0 45px 0;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
 
+        /* Вертикальный стек для двух кнопок */
         .links-container {
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .btn-neon {
+        .btn {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             padding: 18px; 
-            color: #0b0c10;
-            text-decoration: none;
-            background: #00f2fe;
-            border: 1px solid #00f2fe;
             border-radius: 16px;
             font-size: 16px;
             font-weight: 700;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+            text-decoration: none;
             width: 100%;
             box-sizing: border-box;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-neon {
+            color: #0b0c10;
+            background: #00f2fe;
+            border: 1px solid #00f2fe;
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
         }
 
         .btn-neon:hover {
@@ -104,6 +113,21 @@
             border-color: #ffffff;
             color: #0b0c10;
             box-shadow: 0 10px 30px rgba(0, 242, 254, 0.6);
+        }
+
+        .btn-outline {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(0, 242, 254, 0.35);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.05);
+        }
+
+        .btn-outline:hover {
+            transform: translateY(-3px);
+            background: rgba(0, 242, 254, 0.03);
+            border-color: #00f2fe;
+            color: #00f2fe;
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.25);
         }
 
         @media (max-width: 600px) {
@@ -131,7 +155,7 @@
                 margin-bottom: 55px; 
             }
 
-            .btn-neon {
+            .btn {
                 padding: 20px; 
                 font-size: 17px;
                 border-radius: 18px;
@@ -147,7 +171,8 @@
         <p class="description">oneway4mo prime 😈</p>
 
         <div class="links-container">
-            <a href="#" class="btn btn-neon"><i class="fa-brands fa-twitch"></i> Панель управления</a>
+            <a href="#" class="btn btn-neon"><i class="fa-brands fa-twitch"></i> Подключить бота</a>
+            <a href="#" class="btn btn-outline"><i class="fa-solid fa-chart-simple"></i> Панель управления</a>
         </div>
     </div>
 
