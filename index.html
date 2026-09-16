@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4moder Bot — Полная экосистема для Twitch</title>
+    <title>4moder — Полная экосистема для Twitch</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         @keyframes gradientBG {
@@ -28,18 +28,18 @@
             box-sizing: border-box;
         }
 
-        /* Ультра-компактная главная карточка */
+        /* Увеличенная главная карточка */
         .main-card {
             text-align: center;
-            max-width: 380px;
+            max-width: 500px; 
             width: 90%;
-            padding: 20px 25px;
+            padding: 40px; 
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 20px;
+            border-radius: 24px;
             backdrop-filter: blur(12px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            margin-bottom: 25px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+            margin-bottom: 35px;
         }
 
         @keyframes neonPulse {
@@ -49,90 +49,69 @@
         }
 
         .avatar {
-            width: 80px;
-            height: 80px;
-            min-height: 80px;
-            min-width: 80px;
+            width: 95px;
+            height: 95px;
+            min-height: 95px;
+            min-width: 95px;
             border-radius: 50%;
             border: 3px solid #00f2fe;
             animation: neonPulse 3s infinite ease-in-out;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             object-fit: cover;
             display: inline-block;
         }
 
         h1 {
-            font-size: 26px;
-            margin: 0 0 4px 0;
+            font-size: 38px;
+            margin: 0 0 30px 0; 
             font-weight: 800;
             text-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
             letter-spacing: -0.5px;
         }
 
-        .description {
-            font-size: 15px;
-            color: #adadb8;
-            margin: 0 0 20px 0;
-            font-weight: 600;
-        }
-
-        /* Сжатые кнопки в один компактный ряд на ПК */
+        /* Контейнер для одной сплошной кнопки */
         .links-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            width: 100%;
         }
 
-        .btn {
+        /* Сплошная жирная неоновая кнопка на всю ширину */
+        .btn-neon {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 10px 5px;
-            color: #ffffff;
-            text-decoration: none;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .btn-neon {
-            background: #00f2fe;
+            gap: 10px;
+            padding: 16px; 
             color: #0b0c10;
+            text-decoration: none;
+            background: #00f2fe;
             border: 1px solid #00f2fe;
-            box-shadow: 0 4px 12px rgba(0, 242, 254, 0.2);
-        }
-
-        .btn:hover {
-            transform: translateY(-1px);
-            border-color: #00f2fe;
-            color: #00f2fe;
-            box-shadow: 0 4px 12px rgba(0, 242, 254, 0.1);
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .btn-neon:hover {
+            transform: translateY(-2px);
             background: #ffffff;
             border-color: #ffffff;
             color: #0b0c10;
-            box-shadow: 0 6px 18px rgba(0, 242, 254, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.6);
         }
 
-        /* Небольшой аккуратный разделитель */
         .section-title {
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.3);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        /* Идеально ровная горизонтальная сетка */
         .features-grid {
             max-width: 1200px;
             width: 95%;
@@ -141,7 +120,6 @@
             gap: 15px;
         }
 
-        /* Тонкие, невысокие карточки функций */
         .feature-card {
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.04);
@@ -204,36 +182,29 @@
             margin-top: 5px;
         }
 
-        /* Адаптивность для мобилок */
         @media (max-width: 900px) {
             .features-grid { grid-template-columns: repeat(2, 1fr); }
             body { padding: 40px 0; }
         }
         @media (max-width: 600px) {
             .features-grid { grid-template-columns: 1fr; }
-            .links-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Ужатая главная визитка -->
+    <!-- Идеально отцентрованная карточка с одной сплошной кнопкой -->
     <div class="main-card">
         <img class="avatar" src="logo.png" alt="4moder Logo">
-        <h1>4moder Bot</h1>
-        <p class="description">oneway4mo prime 😈</p>
+        <h1>4moder</h1>
 
-        <!-- Кнопки теперь в один компактный ряд -->
         <div class="links-container">
-            <a href="#" class="btn btn-neon"><i class="fa-brands fa-twitch"></i> Панель</a>
-            <a href="#" class="btn"><i class="fa-solid fa-book"></i> Команды</a>
-            <a href="#" class="btn"><i class="fa-brands fa-discord"></i> Дискорд</a>
+            <a href="#" class="btn btn-neon"><i class="fa-brands fa-twitch"></i> Панель управления</a>
         </div>
     </div>
 
     <div class="section-title">Функционал бота</div>
 
-    <!-- Ужатая сетка всех модулей (ровно 4 в ряд, текст короче) -->
     <div class="features-grid">
         
         <!-- Секция 1 -->
