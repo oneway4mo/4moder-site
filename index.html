@@ -9,7 +9,8 @@
     <title>4moder — oneway4mo prime</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        @keyframes purpleFlow {
+        /* Плавный фоновый неоновый туман */
+        @keyframes bgPulse {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
@@ -18,10 +19,10 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #020204, #0a0414, #040406, #0e021a, #020204);
+            background: linear-gradient(135deg, #020204, #0a0414, #040406, #11021f, #020204);
             background-size: 300% 300%;
-            animation: purpleFlow 20s ease-in-out infinite;
-            color: #f5f5f7;
+            animation: bgPulse 20s ease-in-out infinite;
+            color: #ffffff;
             font-family: 'Inter', 'Segoe UI', Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -31,196 +32,180 @@
             box-sizing: border-box;
         }
 
-        /* Контейнер-оболочка всего демона */
+        /* Главный контейнер, который держит форму идеального круга */
         .wrapper {
             position: relative;
             width: 100%;
-            max-width: 550px; /* Сделали шире, чтобы черт был массивным */
+            max-width: 500px;
             aspect-ratio: 1 / 1;
             display: flex;
             justify-content: center;
             align-items: center;
+            box-sizing: border-box;
         }
 
-        /* 😈 ЖИВОЙ СМАЙЛИК ДЕМОНА 1 В 1 (ВЕКТОРНЫЙ ЗАДНИЙ ФОН) */
-        .devil-face-svg {
+        /* Живой векторный Смайл Демона на фоне */
+        .devil-svg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 1;
-            /* Неоновое свечение всей головы */
-            filter: drop-shadow(0 10px 30px rgba(139, 24, 227, 0.4)) drop-shadow(0 0 50px rgba(139, 24, 227, 0.2));
+            filter: drop-shadow(0 15px 40px rgba(139, 24, 227, 0.5));
         }
 
-        /* Контент внутри лица демона (аватарка, текст, кнопка) */
-        .content-overlay {
-            position: relative;
-            z-index: 2; /* Поверх глаз и рта */
+        /* Блок с твоим контентом — ТЕПЕРЬ СИДИТ СТРОГО НА ЛБУ И НЕ ЛЕЗЕТ НА ГЛАЗА */
+        .content-box {
+            position: absolute;
+            top: 32%; /* Ювелирная посадка на лбу */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
             text-align: center;
-            width: 65%; /* Центрируем строго внутри круга головы */
-            margin-top: 35px; /* Смещаем контент чуть ниже бровей */
+            width: 65%;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        @keyframes purplePulse {
+        @keyframes avatarGlow {
             0% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); border-color: #ffffff; }
-            50% { box-shadow: 0 0 25px rgba(186, 85, 255, 0.5); border-color: #ba55ff; }
+            50% { box-shadow: 0 0 25px rgba(186, 85, 255, 0.6); border-color: #ba55ff; }
             100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); border-color: #ffffff; }
         }
 
         .avatar {
-            width: 95px;
-            height: 95px;
-            min-height: 95px;
-            min-width: 95px;
+            width: 85px;
+            height: 85px;
+            min-height: 85px;
+            min-width: 85px;
             border-radius: 50%;
             border: 3px solid #ffffff;
-            animation: purplePulse 4s infinite ease-in-out;
-            margin-bottom: 12px;
+            animation: avatarGlow 4s infinite ease-in-out;
+            margin-bottom: 10px;
             object-fit: cover;
             background: #000;
         }
 
         h1 {
-            font-size: 36px;
-            margin: 0 0 4px 0; 
+            font-size: 34px;
+            margin: 0 0 2px 0; 
             font-weight: 900;
             color: #ffffff;
             letter-spacing: -0.5px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
         }
 
         .description {
-            font-size: 15px;
+            font-size: 14px;
             color: #ffffff;
-            margin: 0 0 25px 0;
+            margin: 0 0 15px 0;
             font-weight: 700;
             letter-spacing: 0.5px;
             text-shadow: 0 2px 8px rgba(0,0,0,0.9);
         }
 
-        .links-container {
-            width: 90%;
-        }
-
-        /* Контрастная кнопка, выделяющаяся на фиолетовом лице */
-        .btn-neon {
+        /* Компактная стильная кнопка из темного стекла */
+        .btn-panel {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 15px; 
+            gap: 8px;
+            padding: 12px 20px; 
             color: #ffffff;
             text-decoration: none;
-            background: rgba(0, 0, 0, 0.4); 
+            background: rgba(0, 0, 0, 0.5); 
             border: 2px solid #ffffff;
-            border-radius: 14px;
-            font-size: 14px;
+            border-radius: 12px;
+            font-size: 13px;
             font-weight: 800;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
             width: 100%;
             box-sizing: border-box;
             backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
 
-        .btn-neon:hover {
+        .btn-panel:hover {
             transform: translateY(-2px);
             background: #ffffff;
-            color: #3a0066;
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
+            color: #4a0080;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6);
+            border-color: #ffffff;
         }
 
-        /* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ ТЕЛЕФОНОВ */
+        /* Адаптация под экраны мобильных телефонов */
         @media (max-width: 600px) {
             .wrapper {
-                max-width: 92%; /* Зажимаем круг черта, чтобы влез на экран */
-                margin-top: -20px;
+                max-width: 90%;
             }
-
-            .content-overlay {
-                margin-top: 15px; /* Корректируем контент под маленькую голову */
-                width: 70%;
+            .content-box {
+                top: 31%; /* Корректировка высоты на мобилке */
             }
-
             .avatar {
-                width: 80px;
-                height: 80px;
-                min-height: 80px;
-                min-width: 80px;
-                margin-bottom: 8px;
+                width: 70px;
+                height: 70px;
+                min-height: 70px;
+                min-width: 70px;
+                margin-bottom: 6px;
             }
-
-            h1 {
-                font-size: 30px;
-            }
-
-            .description {
-                font-size: 13px;
-                margin-bottom: 18px;
-            }
-
-            .btn-neon {
-                padding: 12px;
-                font-size: 13px;
-                border-radius: 12px;
-            }
+            h1 { font-size: 26px; }
+            .description { font-size: 12px; margin-bottom: 12px; }
+            .btn-panel { padding: 10px; font-size: 11px; border-radius: 10px; }
         }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
-        <!-- 😈 ВЕКТОРНАЯ СКЛЕЙКА: ФОРМА, РОГА, ГЛАЗА, БРОВИ И УЛЫБКА ДЕМОНА -->
-        <svg class="devil-face-svg" viewBox="0 0 500 500" xmlns="http://w3.org">
+        <!-- 😈 ВЕКТОРНЫЙ ДЕМОН 1 В 1 С КАНОНИЧНЫМИ ПРОПОРЦИЯМИ ТВИЧА -->
+        <svg class="devil-svg" viewBox="0 0 500 500" xmlns="http://w3.org">
             <defs>
-                <!-- Объемный сферический 3D-градиент для круглой головы, как на картинке -->
-                <radialGradient id="faceGrad" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
-                    <stop offset="0%" stop-color="#a342ff" />
-                    <stop offset="75%" stop-color="#620cb0" />
-                    <stop offset="100%" stop-color="#360366" />
+                <!-- Объемный фиолетовый 3D сферический градиент для круглой головы -->
+                <radialGradient id="devilBg" cx="50%" cy="50%" r="50%" fx="35%" fy="35%">
+                    <stop offset="0%" stop-color="#9b3eff" />
+                    <stop offset="70%" stop-color="#5907a3" />
+                    <stop offset="100%" stop-color="#2a0252" />
                 </radialGradient>
-                <!-- Градиент для объемных рогов -->
+                <!-- Градиент для объемных ушек-рогов -->
                 <linearGradient id="hornGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#360366" />
-                    <stop offset="50%" stop-color="#620cb0" />
-                    <stop offset="100%" stop-color="#a342ff" />
+                    <stop offset="0%" stop-color="#2a0252" />
+                    <stop offset="50%" stop-color="#5907a3" />
+                    <stop offset="100%" stop-color="#9b3eff" />
                 </linearGradient>
             </defs>
 
-            <!-- Левый рог -->
-            <path d="M 160,150 C 130,80 80,40 30,55 C 60,85 90,120 105,165 Z" fill="url(#hornGrad)" stroke="#200140" stroke-width="2" />
+            <!-- Левый каноничный рог -->
+            <path d="M 150,140 C 130,60 70,30 25,45 C 55,75 85,115 100,160 Z" fill="url(#hornGrad)" stroke="#1a0133" stroke-width="3" />
             
-            <!-- Правый рог (отзеркален) -->
-            <path d="M 340,150 C 370,80 420,40 470,55 C 440,85 410,120 395,165 Z" fill="url(#hornGrad)" stroke="#200140" stroke-width="2" />
+            <!-- Правый каноничный рог (идеальное зеркало) -->
+            <path d="M 350,140 C 370,60 430,30 475,45 C 445,75 415,115 400,160 Z" fill="url(#hornGrad)" stroke="#1a0133" stroke-width="3" />
 
-            <!-- Круглая голова черта -->
-            <circle cx="250" cy="270" r="185" fill="url(#faceGrad)" stroke="#200140" stroke-width="3" />
+            <!-- Правильный ровный круг головы -->
+            <circle cx="250" cy="275" r="190" fill="url(#devilBg)" stroke="#1a0133" stroke-width="4" />
 
-            <!-- 😠 ЗЛЫЕ БРОВИ (Точный наклон к центру) -->
-            <path d="M 125,205 Q 165,200 195,225" stroke="#1d0036" stroke-width="10" stroke-linecap="round" fill="none" />
-            <path d="M 375,205 Q 335,200 305,225" stroke="#1d0036" stroke-width="10" stroke-linecap="round" fill="none" />
+            <!-- 😠 АГРЕССИВНЫЕ БРОВИ ИЗ ЭМОДЗИ (смещены вниз, освобождая лоб) -->
+            <path d="M 105,290 C 135,275 165,275 195,295" stroke="#140026" stroke-width="12" stroke-linecap="round" fill="none" />
+            <path d="M 395,290 C 365,275 335,275 305,295" stroke="#140026" stroke-width="12" stroke-linecap="round" fill="none" />
 
-            <!-- 👁️ ГЛАЗА (Коварный прищур Твич-эмодзи) -->
-            <path d="M 135,240 Q 165,225 185,245 Q 160,255 135,240 Z" fill="#1d0036" />
-            <path d="M 365,240 Q 335,225 315,245 Q 340,255 365,240 Z" fill="#1d0036" />
+            <!-- 👁️ ГЛАЗА ЧЕРТИКА (Фирменный коварный прищур под бровями) -->
+            <path d="M 120,325 C 145,310 170,310 185,330 C 160,340 135,340 120,325 Z" fill="#140026" />
+            <path d="M 380,325 C 355,310 330,310 315,330 C 340,340 365,340 380,325 Z" fill="#140026" />
 
-            <!-- 😏 ЗЛОВЕЩАЯ УЛЫБКА ЧЕРТЕНКА (В самом низу под кнопкой) -->
-            <path d="M 160,400 Q 250,455 340,400 Q 250,420 160,400 Z" fill="#1d0036" />
+            <!-- 😏 ЗЛОВЕЩАЯ ДЬЯВОЛЬСКАЯ УЛЫБКА (В самом низу круга) -->
+            <path d="M 155,405 C 250,470 345,405 250,425 Z" fill="#140026" />
         </svg>
 
-        <!-- Контент, встроенный прямо «в лицо» демона -->
-        <div class="content-overlay">
+        <!-- КОНТЕНТ: СИДИТ КРАСИВО И СТРОГО НА ЛБУ -->
+        <div class="content-box">
             <img class="avatar" src="logo.png" alt="4moder Logo">
             <h1>4moder</h1>
             <p class="description">oneway4mo prime 😈</p>
 
             <div class="links-container">
-                <a href="#" class="btn btn-neon"><i class="fa-brands fa-twitch"></i> Панель управления</a>
+                <a href="#" class="btn-panel"><i class="fa-brands fa-twitch"></i> Панель управления</a>
             </div>
         </div>
     </div>
